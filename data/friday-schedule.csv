@@ -1,0 +1,39 @@
+Activity,Details,Speakers,Duration,Time,Content Track/Theme,Where?
+Doors Open & Registration,Play A Curated Youtube Playlist on stage ,,60 mins,8:00 - 9:00 am,,Sundar Video
+Host's Welcome,A welcome speech by the hosts with some house-keeping.,"Sabina Moraa (Host)
+Tabitha Kavyu (Host)
+
+Other Hosts
+None",30 mins,9:00 - 9:30 am,,
+"This.Is.DevFest
+
+Welcome to DevFest 2025",Opening speech by GDG Nairobi Organizer,"Brayan Kai Mwanyumba (Organizer)
+",10 mins,09:30 - 09:40 am,,Main stage
+Transition,,,5 mins,09:40 - 09:45 am,,
+Hands-On Codelab ,Measuring What Matters: Rethinking LLM Evaluation for Production,Lyvian Lusiji,45 mins,09:45 - 10:30 am,,AI/ML
+,From Chaos to Clarity: Revisiting Golang Project Structure,Marvin Hosea,,,,Cloud Stage
+,Building offline AI-powered Android apps: MediaPipe + Gemma 3n,Tom Colvin,,,,Android Stage
+Transition,,,5 mins,10:30 - 10:35 am,,
+Hands-On Codelab ,Accelerating Computer Vision with Vertex AI and Gemini: A Practical Guide,Dr Roushanak Rahmat,45 mins,10:35 - 11:20 am,,AI/ML
+,From Docs to Dialogue: Building an API Documentation Agent with RAG + Gemini + Vertex AI Search,Funke Olasupo,,,,Cloud Stage
+,Unlocking the Potential of IoT on Android with Smartlocks,Cliff Gor,,,,Android Stage
+Transition,,,5 mins,11:20 - 11:25 am,,
+Product Showcase/ Fireside Chat , ,"
+Add Project Details ",35 mins,11:25 - 12:00 pm,,Main Stage
+AMA,A Technical Keynote by a team Member at Google Research or Google Cloud,"Laura Omondi, Harold Nyikal(More of a Better fit ), Sam Kitonyi
+
+
+moderated by Z",30 mins,12:00 - 12:30 pm,,Main stage
+   ,Lunch & photo session,lunch,60 mins,12:30 - 1:30 pm,,
+Hands-On Codelab ,Build Secure AI: Hands-On Multi-Agent Security on Google Cloud Run,Brayan Kai Mwanyumba,45 mins,1:30 - 2:15 pm,,AI/ML
+,Just Use Postgres & Go: Building Production Payment Systems Without Microservices,Brandon Mochama,,,,Cloud Stage
+,Migrating an android library to Kotlin Multiplatform,Donald Isoe,,,,Android Stage
+Transition,,,5 mins,2:15 - 2:20 pm,,
+Hands-On Codelab ,Optimising AI with Retrieval Augmented Generation – Practical Insights from Building AI Tutors,Cyril Michino,45 mins,2:20 - 3:05 pm,,AI/ML
+,Build AI-Powered Apps With Genkit and Angular,Brian Ouma,,,,Cloud Stage
+,From Android to Full-Stack: A Developer's Journey to the Great Unknown,Danny Preussler,,,,Android Stage
+Fireside Chat with Google AI Research Team ,,,25 mins,3:05 - 3:30 pm,,Main Stage
+Transition,,,5 mins,3:30 - 3:35 pm,,
+Prompt BattleField,,,30 mins,3:35 - 4:35 pm,,Main Stage
+Day 1 Closing remarks and Awards,,,5 mins,4:35 - 4:40 pm,,Main Stage
+Networking,,,,,,

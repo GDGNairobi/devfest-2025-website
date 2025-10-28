@@ -1,0 +1,45 @@
+Activity,Details,Speakers,Duration,Time,Content Track/Theme,Where?
+Doors Open & Registration,Play A Curated Youtube Playlist on stage ,,60 mins,8:00 - 9:00 am,,Sundar Video
+Host's Welcome,A welcome speech by the hosts with some house-keeping.," (Host)
+ (Host)
+
+Other Hosts
+None",30 mins,9:00 - 9:30 am,,
+"This.Is.DevFest
+
+Welcome to DevFest 2025",Opening speech by GDG Nairobi Organizer,"Brayan Kai Mwanyumba (Organizer)
+",10 mins,09:30 - 09:40 am,,Main stage
+Technical Keynote ,Google Keynote,,20 mins,09:40 - 10:00 am,,Main stage
+Fireside Chat / Panel - Product Focused,"Startups, ","Kipkorir Kiru
+Femi Taiwo
+Rodgers",40 mins,10:00 - 10:40 am,,
+,,,,,,
+Transition,,,5 mins,10:00 - 10:05 am,,
+Hands-On Codelab ,From Pixels to Prompts: Building Production-Ready Multimodal AI in Go with Genkit,Maina Wycliffe & Brian Ouma,45 mins,09:45 - 10:30 am,,AI/ML
+,Building Safe AI: Content Moderation with ShieldGemma,Miracle Olabode & Alouzeh Brandone Mahbuh,,,,Cloud Stage
+,Driving user engagement in android apps using FCM,Sandra Kuria,,,,Android Stage
+Transition,,,5 mins,10:30 - 10:35 am,,
+Hands-On Codelab ,Smart Shortcuts: Google AI for a More Productive You,Katya Vinnichenko,45 mins,10:35 - 11:20 am,,AI/ML
+,From Alarms to Platforms: Building Scalable Fire Safety Systems with Google Cloud & Angular,Melvin Njuguna,,,,Cloud Stage
+,"One Codebase, Two Platforms: A Pragmatic Guide to Clean KMP Builds",Mambo Brayan,,,,Android Stage
+Transition,,,5 mins,11:20 - 11:25 am,,
+Product Showcase/ Fireside Chat , ,"
+Add Project Details ",35 mins,11:25 - 12:00 pm,,Main Stage
+   ,Lunch & photo session,lunch,60 mins,12:30 - 1:30 pm,,
+Hands-On Codelab ,Data Analysis for finance in Kotlin,Enrique López Mañas,45 mins,1:30 - 2:15 pm,,AI/ML
+,Inside the Black Box: How Databases Scale with On-Disk B-Trees,Ian Kibandi,,,,Cloud Stage
+,Building an AI-Powered Diagnosis App in Flutter,Omar Farouk,,,,Android Stage
+Transition,,,5 mins,2:15 - 2:20 pm,,
+Hands-On Codelab ,Building a RAG System with Gemma using Google UniSim and Hugging Face,Wesley Kambale & Arthur Kaza,45 mins,2:20 - 3:05 pm,,AI/ML
+,Building Technology for Social Impact: Scaling Safe Solutions for Vulnerable Communities,Oliver Wainaina & Mandela Winnie,,,,Cloud Stage
+,Practical AI for Android Developers with Android Studio’s AI Agent,Yves Kalume ,,,,Android Stage
+,,,25 mins,3:05 - 3:30 pm,,Main Stage
+Transition,,,5 mins,3:30 - 3:35 pm,,
+Ice Breaker Activity,,,30 mins,3:35 - 4:35 pm,,Main Stage
+Day 1 Closing remarks and Awards,,,5 mins,4:35 - 4:40 pm,,Main Stage
+Networking,,,,,,
+,,,,,,
+Ice breaker Activity,,,,,,
+"In between - Musical chairs, if we will have music",,,,,,
+End - Bingo Finalist,,,,,,
+Prompt Battle,,,,,,
