@@ -10,7 +10,7 @@ export const DaySelector = component$<DaySelectorProps>(({ selectedDay }) => {
       <button
         class={`rounded-lg px-8 py-3 font-semibold transition-all ${
           selectedDay.value === 1
-            ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
+            ? "bg-linear-to-r from-blue-500 to-blue-600 text-white shadow-md"
             : "text-gray-700 hover:text-gray-900"
         }`}
         onClick$={() => (selectedDay.value = 1)}
@@ -20,7 +20,7 @@ export const DaySelector = component$<DaySelectorProps>(({ selectedDay }) => {
       <button
         class={`rounded-lg px-8 py-3 font-semibold transition-all ${
           selectedDay.value === 2
-            ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md"
+            ? "bg-linear-to-r from-purple-500 to-pink-500 text-white shadow-md"
             : "text-gray-700 hover:text-gray-900"
         }`}
         onClick$={() => (selectedDay.value = 2)}

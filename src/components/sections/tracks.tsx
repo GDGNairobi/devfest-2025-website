@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 
 export const TracksSection = component$(() => {
   return (
-    <section class="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 py-20">
+    <section class="relative overflow-hidden bg-linear-to-b from-white to-gray-50 py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mb-20 text-center">
           <h2 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
@@ -21,10 +21,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(-2deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-50 to-blue-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-blue-50 to-blue-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-blue-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-blue-500 to-blue-700 shadow-xl">
                   <span class="text-4xl">✨</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">
@@ -55,10 +55,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(1deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-50 to-orange-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-amber-50 to-orange-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-orange-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-orange-500 to-amber-600 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-orange-500 to-amber-600 shadow-xl">
                   <span class="text-4xl">🔥</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">
@@ -89,10 +89,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(-1deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-50 to-blue-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-cyan-50 to-blue-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-cyan-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-cyan-500 to-blue-600 shadow-xl">
                   <span class="text-4xl">📱</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">
@@ -123,10 +123,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(2deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-50 to-pink-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-red-50 to-pink-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-red-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-red-500 to-pink-600 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-red-500 to-pink-600 shadow-xl">
                   <span class="text-4xl">⚡</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">
@@ -156,10 +156,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(-1.5deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-50 to-emerald-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-green-50 to-emerald-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-green-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-green-500 to-emerald-600 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-green-500 to-emerald-600 shadow-xl">
                   <span class="text-4xl">☁️</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">
@@ -189,10 +189,10 @@ export const TracksSection = component$(() => {
             class="transition-all duration-500 hover:z-50 hover:scale-105 hover:rotate-0"
             style="transform: rotate(1.5deg);"
           >
-            <div class="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-lime-50 to-green-100 p-8 shadow-2xl">
+            <div class="group relative overflow-hidden rounded-3xl bg-linear-to-br from-lime-50 to-green-100 p-8 shadow-2xl">
               <div class="absolute top-0 right-0 h-40 w-40 translate-x-12 -translate-y-12 rounded-full bg-lime-200 opacity-30"></div>
               <div class="relative">
-                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-lime-500 to-green-600 shadow-xl">
+                <div class="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-linear-to-br from-lime-500 to-green-600 shadow-xl">
                   <span class="text-4xl">🤖</span>
                 </div>
                 <h3 class="mb-3 text-2xl font-bold text-gray-900">

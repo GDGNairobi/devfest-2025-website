@@ -81,11 +81,11 @@ export const WhatHappeningSection = component$(() => {
           {tracks.map((track, index) => (
             <div
               key={index}
-              class={`group rounded-xl bg-gradient-to-br ${track.bgGradient} p-8 shadow-sm transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-lg`}
+              class={`group rounded-xl bg-linear-to-br ${track.bgGradient} p-8 shadow-sm transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-lg`}
               style={`transform: rotate(${track.rotation});`}
             >
               <div
-                class={`mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br ${track.gradient} shadow-md`}
+                class={`mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-linear-to-br ${track.gradient} shadow-md`}
               >
                 <span class="text-3xl">{track.icon}</span>
               </div>

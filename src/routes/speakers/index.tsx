@@ -155,7 +155,7 @@ export default component$(() => {
                   return (
                     <div
                       key={speaker._id}
-                      class={`group rounded-xl bg-gradient-to-br ${gradient.bg} p-8 shadow-sm transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-lg`}
+                      class={`group rounded-xl bg-linear-to-br ${gradient.bg} p-8 shadow-sm transition-all duration-300 hover:scale-105 hover:rotate-0 hover:shadow-lg`}
                       style={`transform: rotate(${getRotation(index)});`}
                     >
                       {/* Speaker Photo/Icon */}
@@ -170,14 +170,14 @@ export default component$(() => {
                               height={128}
                             />
                             <div
-                              class={`absolute -right-2 -bottom-2 flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${gradient.icon} shadow-md`}
+                              class={`absolute -right-2 -bottom-2 flex h-12 w-12 items-center justify-center rounded-lg bg-linear-to-br ${gradient.icon} shadow-md`}
                             >
                               <span class="text-2xl">🎤</span>
                             </div>
                           </div>
                         ) : (
                           <div
-                            class={`flex h-32 w-32 items-center justify-center rounded-xl bg-gradient-to-br ${gradient.icon} shadow-md`}
+                            class={`flex h-32 w-32 items-center justify-center rounded-xl bg-linear-to-br ${gradient.icon} shadow-md`}
                           >
                             <span class="text-6xl font-bold text-white">
                               {speaker.name.charAt(0)}

@@ -297,7 +297,7 @@ export const HeroSection = component$(() => {
                 (tag, idx) => (
                   <span
                     key={idx}
-                    class={`theme-tag rounded-full bg-gradient-to-r ${tag.gradient} px-4 py-2 text-sm font-semibold text-white shadow-md`}
+                    class={`theme-tag rounded-full bg-linear-to-r ${tag.gradient} px-4 py-2 text-sm font-semibold text-white shadow-md`}
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
                     {tag.label}

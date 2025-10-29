@@ -147,7 +147,7 @@ export default component$(() => {
                   <div>
                     <h3 class="mb-8 text-center">
                       <span
-                        class={`inline-block bg-gradient-to-r ${getTierColor("platinum")} bg-clip-text text-3xl font-bold text-transparent`}
+                        class={`inline-block bg-linear-to-r ${getTierColor("platinum")} bg-clip-text text-3xl font-bold text-transparent`}
                       >
                         Platinum Sponsors
                       </span>
@@ -179,7 +179,7 @@ export default component$(() => {
                   <div>
                     <h3 class="mb-8 text-center">
                       <span
-                        class={`inline-block bg-gradient-to-r ${getTierColor("gold")} bg-clip-text text-2xl font-bold text-transparent`}
+                        class={`inline-block bg-linear-to-r ${getTierColor("gold")} bg-clip-text text-2xl font-bold text-transparent`}
                       >
                         Gold Sponsors
                       </span>
@@ -211,7 +211,7 @@ export default component$(() => {
                   <div>
                     <h3 class="mb-8 text-center">
                       <span
-                        class={`inline-block bg-gradient-to-r ${getTierColor("silver")} bg-clip-text text-2xl font-bold text-transparent`}
+                        class={`inline-block bg-linear-to-r ${getTierColor("silver")} bg-clip-text text-2xl font-bold text-transparent`}
                       >
                         Silver Sponsors
                       </span>
@@ -243,7 +243,7 @@ export default component$(() => {
                   <div>
                     <h3 class="mb-8 text-center">
                       <span
-                        class={`inline-block bg-gradient-to-r ${getTierColor("bronze")} bg-clip-text text-xl font-bold text-transparent`}
+                        class={`inline-block bg-linear-to-r ${getTierColor("bronze")} bg-clip-text text-xl font-bold text-transparent`}
                       >
                         Bronze Sponsors
                       </span>
@@ -275,7 +275,7 @@ export default component$(() => {
                   <div>
                     <h3 class="mb-8 text-center">
                       <span
-                        class={`inline-block bg-gradient-to-r ${getTierColor("community")} bg-clip-text text-xl font-bold text-transparent`}
+                        class={`inline-block bg-linear-to-r ${getTierColor("community")} bg-clip-text text-xl font-bold text-transparent`}
                       >
                         Community Partners
                       </span>
@@ -305,7 +305,7 @@ export default component$(() => {
             )}
 
             {/* Sponsorship Benefits CTA */}
-            <div class="mt-16 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center text-white shadow-lg">
+            <div class="mt-16 rounded-xl bg-linear-to-r from-blue-600 to-purple-600 p-8 text-center text-white shadow-lg">
               <h3 class="mb-4 text-3xl font-bold">
                 Why Sponsor DevFest Nairobi?
               </h3>
