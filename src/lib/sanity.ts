@@ -2,10 +2,10 @@ import { createClient } from "@sanity/client";
 
 // Sanity client configuration
 export const sanityClient = createClient({
-  projectId: process.env.PUBLIC_SANITY_PROJECT_ID || "your-project-id",
-  dataset: process.env.PUBLIC_SANITY_DATASET || "production",
+  projectId: "5gw7tzl4",
+  dataset: "production",
   apiVersion: "2024-01-01",
-  useCdn: false, // Disable CDN to get fresh data (set to true in production after initial seeding)
+  useCdn: false,
 });
 
 // Types for our Sanity data
