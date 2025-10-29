@@ -7,6 +7,8 @@
 # Development
 node_modules
 .env
+.env.local
+.env.*.local
 *.local
 
 # Cache
@@ -14,6 +16,11 @@ node_modules
 .mf
 .rollup.cache
 tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Temporary files
+tmp/
+.tmp/
 
 # Logs
 logs
@@ -30,12 +37,19 @@ lerna-debug.log*
 !.vscode/*.code-snippets
 
 .idea
+*.swp
+*.swo
+*.swn
+*~
+
+# OS files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
 # Yarn
 .yarn/*
@@ -43,3 +57,4 @@ lerna-debug.log*
 
 # Cloudflare
 functions/**/*.js
+.wrangler/
