@@ -1,5 +1,10 @@
 import { component$ } from "@builder.io/qwik";
-import type { Session, TrackWithSpeakers } from "~/lib/sanity";
+import type { TrackWithSpeakers } from "~/lib/sanity";
+import type {
+  SessionCardProps,
+  SessionTypeBadgeProps,
+  SpeakerListProps,
+} from "~/lib/types";
 import {
   formatTime,
   getBreakTypeLabel,
@@ -8,10 +13,6 @@ import {
   getSessionTitleColor,
   isBreakType,
 } from "../lib/schedule.utils";
-
-interface SessionCardProps {
-  session: Session;
-}
 
 export const SessionCard = component$<SessionCardProps>(({ session }) => {
   return (
@@ -143,7 +144,7 @@ export const SessionCard = component$<SessionCardProps>(({ session }) => {
 });
 
 // Sub-component for session type badge
-const SessionTypeBadge = component$<{ type: Session["type"] }>(({ type }) => {
+const SessionTypeBadge = component$<SessionTypeBadgeProps>(({ type }) => {
   return (
     <div class="mb-3 flex flex-wrap items-center gap-2">
       {isBreakType(type) ? (
@@ -163,41 +164,39 @@ const SessionTypeBadge = component$<{ type: Session["type"] }>(({ type }) => {
 });
 
 // Sub-component for speaker list
-const SpeakerList = component$<{ speakers: Session["speakers"] }>(
-  ({ speakers }) => {
-    return (
-      <div class="mt-4 space-y-2 border-t-2 border-dashed border-gray-400 pt-4">
-        {speakers?.map((speaker) => (
-          <div key={speaker._id} class="flex items-center gap-3">
-            {speaker.photo?.asset?.url ? (
-              <div class="shrink-0 rounded border-4 border-white bg-white p-1 shadow-md">
-                <img
-                  src={speaker.photo.asset.url}
-                  alt={speaker.name}
-                  class="h-12 w-12 object-cover"
-                  width={48}
-                  height={48}
-                />
-              </div>
-            ) : (
-              <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded border-4 border-white bg-gray-700 font-mono text-lg font-bold text-white shadow-md">
-                {speaker.name.charAt(0)}
-              </div>
-            )}
-            <div class="min-w-0">
-              <p class="truncate font-mono text-sm font-bold text-gray-900">
-                {speaker.name}
-              </p>
-              {speaker.title && (
-                <p class="truncate font-mono text-xs text-gray-700">
-                  {speaker.title}
-                  {speaker.company && ` @ ${speaker.company}`}
-                </p>
-              )}
+const SpeakerList = component$<SpeakerListProps>(({ speakers }) => {
+  return (
+    <div class="mt-4 space-y-2 border-t-2 border-dashed border-gray-400 pt-4">
+      {speakers?.map((speaker) => (
+        <div key={speaker._id} class="flex items-center gap-3">
+          {speaker.photo?.asset?.url ? (
+            <div class="shrink-0 rounded border-4 border-white bg-white p-1 shadow-md">
+              <img
+                src={speaker.photo.asset.url}
+                alt={speaker.name}
+                class="h-12 w-12 object-cover"
+                width={48}
+                height={48}
+              />
             </div>
+          ) : (
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded border-4 border-white bg-gray-700 font-mono text-lg font-bold text-white shadow-md">
+              {speaker.name.charAt(0)}
+            </div>
+          )}
+          <div class="min-w-0">
+            <p class="truncate font-mono text-sm font-bold text-gray-900">
+              {speaker.name}
+            </p>
+            {speaker.title && (
+              <p class="truncate font-mono text-xs text-gray-700">
+                {speaker.title}
+                {speaker.company && ` @ ${speaker.company}`}
+              </p>
+            )}
           </div>
-        ))}
-      </div>
-    );
-  },
-);
+        </div>
+      ))}
+    </div>
+  );
+});

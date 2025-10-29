@@ -1,9 +1,6 @@
-import { component$, type Signal } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
+import type { TrackFilterProps } from "~/lib/types";
 import { getTrackGradient } from "../lib/schedule.utils";
-
-interface TrackFilterProps {
-  selectedStage: Signal<string>;
-}
 
 type Stage = {
   id: string;

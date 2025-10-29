@@ -1,4 +1,6 @@
-import type { QRL } from '@builder.io/qwik';
+import type { QRL, Signal } from '@builder.io/qwik';
+import type { Session as SanitySession } from './sanity';
+import type { TimeSlot } from './schedule.utils';
 
 // TypeScript definitions for DevFest Nairobi 2025
 
@@ -125,4 +127,53 @@ export interface ButtonProps {
   href?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+}
+
+// Icon component props
+export interface IconProps {
+  class?: string;
+  width?: string | number;
+  height?: string | number;
+}
+
+// Schedule component props
+export interface DaySelectorProps {
+  selectedDay: Signal<1 | 2>;
+}
+
+export interface TrackFilterProps {
+  selectedStage: Signal<string>;
+}
+
+export interface SessionCardProps {
+  session: SanitySession;
+}
+
+export interface ScheduleTimelineProps {
+  timeSlots: TimeSlot[];
+}
+
+export interface TimelineMarkerProps {
+  time: string;
+}
+
+export interface SessionTypeBadgeProps {
+  type: SanitySession['type'];
+}
+
+export interface SpeakerListProps {
+  speakers: SanitySession['speakers'];
+}
+
+// Floating icon props
+export interface FloatingTechIconProps {
+  config: {
+    component: string;
+    label: string;
+    x: number;
+    y: number;
+    delay: number;
+    speed: number;
+    animationType?: "float" | "float-alt" | "float-bounce";
+  };
 }

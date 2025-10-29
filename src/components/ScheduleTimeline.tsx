@@ -1,11 +1,7 @@
 import { component$ } from "@builder.io/qwik";
-import type { TimeSlot } from "../lib/schedule.utils";
+import type { ScheduleTimelineProps } from "~/lib/types";
 import { SessionCard } from "./SessionCard";
 import { TimelineMarker } from "./TimelineMarker";
-
-interface ScheduleTimelineProps {
-  timeSlots: TimeSlot[];
-}
 
 export const ScheduleTimeline = component$<ScheduleTimelineProps>(
   ({ timeSlots }) => {

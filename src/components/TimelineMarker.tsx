@@ -1,9 +1,6 @@
 import { component$ } from "@builder.io/qwik";
+import type { TimelineMarkerProps } from "~/lib/types";
 import { formatTime } from "../lib/schedule.utils";
-
-interface TimelineMarkerProps {
-  time: string;
-}
 
 export const TimelineMarker = component$<TimelineMarkerProps>(({ time }) => {
   return (

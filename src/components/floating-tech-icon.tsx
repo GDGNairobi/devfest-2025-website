@@ -15,6 +15,7 @@ import {
   TerminalIcon,
   VertexAIIcon,
 } from "~/components/icons";
+import type { FloatingTechIconProps } from "~/lib/types";
 
 export interface FloatingIconConfig {
   component: string;
@@ -24,10 +25,6 @@ export interface FloatingIconConfig {
   delay: number;
   speed: number;
   animationType?: "float" | "float-alt" | "float-bounce";
-}
-
-interface FloatingTechIconProps {
-  config: FloatingIconConfig;
 }
 
 const ICON_COMPONENTS = {

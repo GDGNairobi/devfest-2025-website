@@ -1,8 +1,5 @@
-import { component$, type Signal } from "@builder.io/qwik";
-
-interface DaySelectorProps {
-  selectedDay: Signal<1 | 2>;
-}
+import { component$ } from "@builder.io/qwik";
+import type { DaySelectorProps } from "~/lib/types";
 
 export const DaySelector = component$<DaySelectorProps>(({ selectedDay }) => {
   return (
