@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Optimize font loading for better LCP */
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial");
+  size-adjust: 95%;
+  ascent-override: 90%;
+  descent-override: 25%;
+}
+
 /* Material You Design Tokens for DevFest Nairobi 2025 */
 :root {
   /* Primary Colors */
@@ -114,6 +123,7 @@ html {
 body {
   font-family:
     "Space Grotesk",
+    "Space Grotesk Fallback",
     "JetBrains Mono",
     "Roboto",
     monospace,
@@ -123,6 +133,8 @@ body {
   background-color: var(--md-sys-color-surface);
   color: var(--md-sys-color-on-surface);
   line-height: 1.5;
+  /* Prevent layout shift during font load */
+  font-display: swap;
 }
 
 /* Code-inspired typography for headings */

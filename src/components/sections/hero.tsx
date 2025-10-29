@@ -250,18 +250,18 @@ export const HeroSection = component$(() => {
 
   return (
     <section class="relative min-h-screen overflow-hidden bg-white">
-      {/* Floating Tech Icons with Animation */}
+      {/* Floating Tech Icons with Animation - Lazy render after hero content */}
       {floatingIconsConfig.map((config, index) => (
         <FloatingTechIcon key={index} config={config} />
       ))}
       {/* Main Content - Centered */}
       <div class="relative z-20 flex min-h-screen items-center justify-center px-4">
         <div class="mx-auto max-w-4xl text-center">
-          {/* DevFest Logo/Badge */}
+          {/* DevFest Logo/Badge - Critical LCP element with explicit sizing hint */}
           <div class="mb-8 inline-block">
-            <div class="mb-2 text-4xl font-semibold text-gray-900 md:text-8xl">
+            <h1 class="mb-2 text-4xl font-semibold text-gray-900 md:text-8xl">
               DevFest Nairobi 2025
-            </div>
+            </h1>
           </div>
 
           {/* Day Switcher */}
