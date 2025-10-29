@@ -71,9 +71,14 @@ export interface Track {
   slug: {
     current: string;
   };
-  color?: string;
+  category: "ai-ml" | "cloud" | "mobile-web" | "main";
   icon?: string;
   description?: string;
+}
+
+export interface TrackWithSpeakers {
+  track: Track;
+  speakers?: Speaker[];
 }
 
 export interface Session {
@@ -86,20 +91,17 @@ export interface Session {
     | "workshop"
     | "codelab"
     | "panel"
-    | "fireside"
+    | "lightning"
     | "break"
     | "lunch"
     | "registration"
-    | "networking"
-    | "icebreaker";
+    | "networking";
+  isFullVenue: boolean;
   day: 1 | 2;
   startTime: string;
   endTime: string;
-  duration?: number;
-  track?: Track;
+  tracks?: TrackWithSpeakers[];
   speakers?: Speaker[];
-  isBreak?: boolean;
-  isKeynote?: boolean;
   level?: "beginner" | "intermediate" | "advanced" | "all";
   tags?: string[];
   resources?: Array<{
@@ -206,7 +208,7 @@ export async function getTracks(): Promise<Track[]> {
     _id,
     name,
     slug,
-    color,
+    category,
     icon,
     description
   }`;
@@ -222,16 +224,29 @@ export async function getSessions(day?: 1 | 2): Promise<Session[]> {
     title,
     description,
     type,
+    isFullVenue,
     day,
     startTime,
     endTime,
-    duration,
-    track-> {
-      _id,
-      name,
-      slug,
-      color,
-      icon
+    tracks[] {
+      track-> {
+        _id,
+        name,
+        slug,
+        category,
+        icon
+      },
+      speakers[]-> {
+        _id,
+        name,
+        photo {
+          asset-> {
+            url
+          }
+        },
+        title,
+        company
+      }
     },
     speakers[]-> {
       _id,
@@ -244,8 +259,6 @@ export async function getSessions(day?: 1 | 2): Promise<Session[]> {
       title,
       company
     },
-    isBreak,
-    isKeynote,
     level,
     tags,
     resources

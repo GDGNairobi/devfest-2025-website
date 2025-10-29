@@ -102,22 +102,6 @@ export const Footer = component$(() => {
                   Sponsors
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/location"
-                  class="text-gray-300 transition-colors hover:text-white"
-                >
-                  Location
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/code-of-conduct"
-                  class="text-gray-300 transition-colors hover:text-white"
-                >
-                  Code of Conduct
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -173,23 +157,17 @@ export const Footer = component$(() => {
         <div class="mt-12 border-t border-gray-800 pt-8">
           <div class="flex flex-col items-center justify-between md:flex-row">
             <p class="text-sm text-gray-300">
-              © {currentYear} GDG Nairobi. Made with ❤️ by the East African
-              tech community.
+              © {currentYear} GDG Nairobi. Made with ❤️ by{" "}
+              <a
+                href="https://github.com/GDGNairobi/devfest-2025-website"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-400 transition-colors hover:text-blue-300"
+              >
+                GDG Nairobi
+              </a>
+              .
             </p>
-            <div class="mt-4 flex space-x-6 md:mt-0">
-              <Link
-                href="/privacy"
-                class="text-sm text-gray-300 transition-colors hover:text-white"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                href="/terms"
-                class="text-sm text-gray-300 transition-colors hover:text-white"
-              >
-                Terms of Service
-              </Link>
-            </div>
           </div>
           <p class="mt-4 text-center text-sm text-gray-400 md:text-left">
             Together we grow, together we build! 🌱

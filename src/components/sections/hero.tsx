@@ -253,7 +253,10 @@ export const HeroSection = component$(() => {
               ⏰ 8:00 AM – 5:00 PM (EAT) • Day {selectedDay.value} of 2
             </p>
             <p class="text-lg text-gray-600 md:text-xl">
-              📍 The Sarit Expo Centre, Nairobi
+              📍{" "}
+              {selectedDay.value === 1
+                ? "Simba Corporation Aspire Center Westlands"
+                : "The Sarit Expo Centre, Nairobi"}
             </p>
           </div>
 

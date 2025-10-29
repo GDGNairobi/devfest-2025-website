@@ -1,21 +1,23 @@
-export default {
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
   name: 'session',
   title: 'Session',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Session Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
       rows: 4,
-    },
-    {
+    }),
+    defineField({
       name: 'type',
       title: 'Session Type',
       type: 'string',
@@ -26,17 +28,23 @@ export default {
           {title: 'Workshop', value: 'workshop'},
           {title: 'Codelab', value: 'codelab'},
           {title: 'Panel', value: 'panel'},
-          {title: 'Fireside Chat', value: 'fireside'},
+          {title: 'Lightning Talk', value: 'lightning'},
           {title: 'Break', value: 'break'},
           {title: 'Lunch', value: 'lunch'},
           {title: 'Registration', value: 'registration'},
           {title: 'Networking', value: 'networking'},
-          {title: 'Ice Breaker', value: 'icebreaker'},
         ],
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
+      name: 'isFullVenue',
+      title: 'Full Venue Session',
+      type: 'boolean',
+      description: 'Check for keynotes, breaks, or any session spanning all tracks',
+      initialValue: false,
+    }),
+    defineField({
       name: 'day',
       title: 'Day',
       type: 'number',
@@ -47,66 +55,111 @@ export default {
         ],
       },
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'startTime',
       title: 'Start Time',
       type: 'string',
       description: 'Format: HH:mm (24-hour, e.g., 09:00, 14:30)',
       validation: (Rule) => Rule.required(),
-    },
-    {
+    }),
+    defineField({
       name: 'endTime',
       title: 'End Time',
       type: 'string',
       description: 'Format: HH:mm (24-hour, e.g., 09:00, 14:30)',
       validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'duration',
-      title: 'Duration (minutes)',
-      type: 'number',
-    },
-    {
-      name: 'track',
-      title: 'Track',
-      type: 'reference',
-      to: [{type: 'track'}],
-      description: 'Leave empty for full-venue sessions like keynotes',
-    },
-    {
+    }),
+    defineField({
+      name: 'tracks',
+      title: 'Tracks with Speakers',
+      type: 'array',
+      description:
+        'Select tracks and assign speakers to each track. Optional for full-venue sessions and breaks.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'track',
+              title: 'Track',
+              type: 'reference',
+              to: [{type: 'track'}],
+              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'speakers',
+              title: 'Speakers for this Track',
+              type: 'array',
+              of: [{type: 'reference', to: [{type: 'speaker'}]}],
+              description: 'Speakers presenting in this specific track',
+            },
+          ],
+          preview: {
+            select: {
+              trackName: 'track.name',
+              trackIcon: 'track.icon',
+              speakers: 'speakers',
+            },
+            prepare(selection) {
+              const {trackName, trackIcon, speakers} = selection
+              const speakerCount = speakers?.length || 0
+              return {
+                title: `${trackIcon || ''} ${trackName || 'Track'}`.trim(),
+                subtitle: speakerCount ? `${speakerCount} speaker(s)` : 'No speakers',
+              }
+            },
+          },
+        },
+      ],
+      hidden: ({parent}) =>
+        parent?.isFullVenue ||
+        ['break', 'lunch', 'registration', 'networking'].includes(parent?.type),
+      validation: (Rule) =>
+        Rule.custom((tracks, context) => {
+          const parent = context.parent as any
+          const isFullVenue = parent?.isFullVenue
+          const sessionType = parent?.type
+
+          // Break types and full venue sessions don't need tracks
+          const isBreakType = ['break', 'lunch', 'registration', 'networking'].includes(sessionType)
+
+          if (isFullVenue || isBreakType) {
+            return true // Tracks are optional
+          }
+
+          // For regular sessions, tracks are required
+          if (!tracks || (Array.isArray(tracks) && tracks.length === 0)) {
+            return 'Please select at least one track for regular sessions, or mark as "Full Venue Session"'
+          }
+
+          return true
+        }),
+    }),
+    defineField({
       name: 'speakers',
-      title: 'Speakers',
+      title: 'Default Speakers',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'speaker'}]}],
-    },
-    {
-      name: 'isBreak',
-      title: 'Is Break/Transition',
-      type: 'boolean',
-      description: 'Mark as break, lunch, or transition time',
-      initialValue: false,
-    },
-    {
-      name: 'isKeynote',
-      title: 'Is Keynote',
-      type: 'boolean',
-      description: 'Mark as keynote session for special highlighting',
-      initialValue: false,
-    },
-    {
+      description:
+        'Default speakers for sessions without tracks, or full-venue sessions (keynotes, panels)',
+      hidden: ({parent}) => ['break', 'lunch', 'registration', 'networking'].includes(parent?.type),
+    }),
+    defineField({
       name: 'level',
-      title: 'Level',
+      title: 'Difficulty Level',
       type: 'string',
       options: {
         list: [
           {title: 'Beginner', value: 'beginner'},
           {title: 'Intermediate', value: 'intermediate'},
           {title: 'Advanced', value: 'advanced'},
+          {title: 'All Levels', value: 'all'},
         ],
       },
-    },
-    {
+      hidden: ({parent}) => ['break', 'lunch', 'registration', 'networking'].includes(parent?.type),
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -114,8 +167,9 @@ export default {
       options: {
         layout: 'tags',
       },
-    },
-    {
+      hidden: ({parent}) => ['break', 'lunch', 'registration', 'networking'].includes(parent?.type),
+    }),
+    defineField({
       name: 'resources',
       title: 'Resources',
       type: 'array',
@@ -128,21 +182,33 @@ export default {
           ],
         },
       ],
-    },
+      hidden: ({parent}) => ['break', 'lunch', 'registration', 'networking'].includes(parent?.type),
+    }),
   ],
   preview: {
     select: {
       title: 'title',
       day: 'day',
       startTime: 'startTime',
-      track: 'track.name',
+      type: 'type',
+      isFullVenue: 'isFullVenue',
+      tracks: 'tracks',
     },
-    prepare(selection) {
-      const {title, day, startTime, track} = selection
+    prepare(selection: any) {
+      const {title, day, startTime, type, isFullVenue, tracks} = selection
+
+      let subtitle = `Day ${day} - ${startTime} - ${type.charAt(0).toUpperCase() + type.slice(1)}`
+
+      if (isFullVenue) {
+        subtitle += ' (Full Venue)'
+      } else if (tracks && tracks.length > 0) {
+        subtitle += ` (${tracks.length} track${tracks.length > 1 ? 's' : ''})`
+      }
+
       return {
         title: title,
-        subtitle: `Day ${day} - ${startTime}${track ? ` - ${track}` : ''}`,
+        subtitle: subtitle,
       }
     },
   },
-}
+})

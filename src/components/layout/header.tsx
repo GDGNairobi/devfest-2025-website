@@ -54,7 +54,11 @@ export const Header = component$(() => {
             >
               🛍️ Get Merch
             </Link>
-            <Link href="#register" class="btn-primary">
+            <Link
+              href="https://gdg.community.dev/events/details/google-gdg-nairobi-presents-devfest-nairobi-day-two/"
+              target="_blank"
+              class="btn-primary"
+            >
               Register Now
             </Link>
           </div>
