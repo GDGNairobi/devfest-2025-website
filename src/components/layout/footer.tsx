@@ -237,6 +237,15 @@ export const Footer = component$(() => {
                 class="text-blue-400 transition-colors hover:text-blue-300"
               >
                 GDG Nairobi
+              </a>{" "}
+              in collaboration with{" "}
+              <a
+                href="https://unstacked.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-400 transition-colors hover:text-blue-300"
+              >
+                Unstacked Labs
               </a>
               .
             </p>
