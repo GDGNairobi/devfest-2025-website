@@ -9,6 +9,7 @@ DevFest Nairobi 2025 uses Sanity.io as its headless CMS for managing all event c
 ### Sanity Studio Access
 
 **Local Development**:
+
 ```bash
 cd sanity-studio
 pnpm install
@@ -22,11 +23,11 @@ Visit your deployed Sanity Studio URL (configured during setup)
 
 ### User Roles
 
-| Role | Permissions | Who Gets This |
-|------|-------------|---------------|
+| Role              | Permissions                             | Who Gets This          |
+| ----------------- | --------------------------------------- | ---------------------- |
 | **Administrator** | Full access to all content and settings | GDG Nairobi organizers |
-| **Editor** | Create, edit, publish content | Content team |
-| **Reviewer** | View and comment only | Reviewers, volunteers |
+| **Editor**        | Create, edit, publish content           | Content team           |
+| **Reviewer**      | View and comment only                   | Reviewers, volunteers  |
 
 ## Content Types
 
@@ -35,6 +36,7 @@ Visit your deployed Sanity Studio URL (configured during setup)
 Global event configuration and settings.
 
 **Fields**:
+
 - **Event Name**: DevFest Nairobi 2025
 - **Dates**: Event start and end dates
 - **Venue**: Location details with map coordinates
@@ -44,6 +46,7 @@ Global event configuration and settings.
 - **Live Stream URL**: Optional live stream link
 
 **Usage**:
+
 - Only ONE event info document should exist
 - Update dates/status as event approaches
 - Live status controls real-time features on site
@@ -53,6 +56,7 @@ Global event configuration and settings.
 Individual speaker profiles.
 
 **Required Fields**:
+
 - **Name**: Speaker's full name
 - **Slug**: URL-friendly identifier (auto-generated)
 - **Bio**: Speaker biography (rich text, 2-3 paragraphs)
@@ -61,6 +65,7 @@ Individual speaker profiles.
 - **Job Title**: Current position
 
 **Optional Fields**:
+
 - **Twitter**: Handle (without @)
 - **LinkedIn**: Profile URL
 - **GitHub**: Username
@@ -69,6 +74,7 @@ Individual speaker profiles.
 - **Is Keynote**: Highlight as keynote speaker
 
 **Best Practices**:
+
 - Use high-quality, professional photos
 - Keep bios concise but informative
 - Include social links for networking
@@ -79,6 +85,7 @@ Individual speaker profiles.
 Conference talks, workshops, and panels.
 
 **Required Fields**:
+
 - **Title**: Session title
 - **Slug**: URL-friendly identifier
 - **Description**: Detailed session description (rich text)
@@ -89,6 +96,7 @@ Conference talks, workshops, and panels.
 - **Speakers**: Array of speaker references
 
 **Optional Fields**:
+
 - **Level**: Beginner | Intermediate | Advanced
 - **Tags**: Array of topic tags
 - **Room**: Venue room/stage name
@@ -96,6 +104,7 @@ Conference talks, workshops, and panels.
 - **Prerequisites**: Required knowledge/tools
 
 **Best Practices**:
+
 - Use descriptive titles (50-70 characters)
 - Include learning outcomes in description
 - Set accurate start/end times
@@ -107,6 +116,7 @@ Conference talks, workshops, and panels.
 Conference tracks/themes.
 
 **Fields**:
+
 - **Name**: Track name (e.g., "AI & ML", "Web", "Mobile")
 - **Slug**: URL-friendly identifier
 - **Description**: Track overview
@@ -115,6 +125,7 @@ Conference tracks/themes.
 - **Order**: Display order (lower numbers first)
 
 **Example Tracks**:
+
 - AI & Machine Learning 🤖
 - Web Development 🌐
 - Mobile Development 📱
@@ -126,18 +137,21 @@ Conference tracks/themes.
 Event sponsors and partners.
 
 **Required Fields**:
+
 - **Name**: Company name
 - **Logo**: Company logo (SVG preferred, PNG fallback)
 - **Website**: Company website URL
 - **Tier**: Platinum | Gold | Silver | Bronze | Community
 
 **Optional Fields**:
+
 - **Description**: Company description
 - **Social Links**: Twitter, LinkedIn, etc.
 - **Featured**: Highlight on homepage
 - **Perks**: What they're offering (e.g., swag, hiring)
 
 **Logo Guidelines**:
+
 - Format: SVG (vector) or PNG with transparency
 - Size: Minimum 400x400px
 - Style: Use official brand logo
@@ -148,6 +162,7 @@ Event sponsors and partners.
 GDG Nairobi team members.
 
 **Fields**:
+
 - **Name**: Organizer name
 - **Role**: Title/position (e.g., "Lead Organizer")
 - **Photo**: Profile photo (recommended: 400x400px)
@@ -161,6 +176,7 @@ GDG Nairobi team members.
 Event venue details.
 
 **Fields**:
+
 - **Name**: Venue name
 - **Address**: Full address
 - **City**: Nairobi
@@ -204,12 +220,14 @@ Event venue details.
 ### Updating Schedule
 
 **For Minor Changes**:
+
 1. Find session in Sessions list
 2. Edit start/end time
 3. Publish changes
 4. Changes appear on site immediately
 
 **For Major Changes**:
+
 1. Consider using "Drafts" first
 2. Review all affected sessions
 3. Publish all changes together
@@ -218,6 +236,7 @@ Event venue details.
 ### Managing Sponsors
 
 **Adding New Sponsor**:
+
 1. Go to "Sponsors"
 2. Create new sponsor
 3. Upload logo (check guidelines!)
@@ -227,6 +246,7 @@ Event venue details.
 7. Publish
 
 **Reordering Sponsors**:
+
 - Within each tier, drag to reorder
 - Or use "Order" field for explicit ordering
 
@@ -235,6 +255,7 @@ Event venue details.
 ### Content Quality
 
 **Writing Guidelines**:
+
 - Use clear, concise language
 - Avoid jargon when possible
 - Proofread before publishing
@@ -242,6 +263,7 @@ Event venue details.
 - Keep paragraphs short (3-4 lines)
 
 **Image Guidelines**:
+
 - **Format**: WebP, PNG, or JPG
 - **Size**: Optimize before upload (use TinyPNG)
 - **Dimensions**: Follow recommended sizes
@@ -251,12 +273,14 @@ Event venue details.
 ### Scheduling Best Practices
 
 **Timing**:
+
 - Include 10-15 minute breaks between sessions
 - Allow 45-60 minutes for lunch
 - Schedule popular talks in larger rooms
 - Avoid parallel tracks for keynotes
 
 **Time Zones**:
+
 - Always use Africa/Nairobi timezone
 - Double-check AM/PM when entering times
 - Consider international attendee timezones in descriptions
@@ -264,16 +288,19 @@ Event venue details.
 ### SEO Optimization
 
 **Titles**:
+
 - Front-load important keywords
 - Keep under 60 characters
 - Make them compelling and descriptive
 
 **Descriptions**:
+
 - First 150 characters are most important
 - Include relevant keywords naturally
 - Write for humans, not just search engines
 
 **Slugs**:
+
 - Use hyphens, not underscores
 - Keep short but descriptive
 - Include primary keyword when relevant
@@ -313,11 +340,13 @@ Sanity's rich text editor (Portable Text) supports:
 ### Scheduling Content
 
 **For Future Sessions**:
+
 - Create session with future dates
 - Publish immediately
 - Site will show "Coming Soon" automatically
 
 **For Announcements**:
+
 - Use draft mode until ready
 - Publish at announcement time
 - Content appears immediately on site
@@ -327,18 +356,21 @@ Sanity's rich text editor (Portable Text) supports:
 ### Common Issues
 
 **Images Not Showing**:
+
 - Check file size (max 10MB)
 - Verify image format (JPG, PNG, WebP, SVG)
 - Ensure image is published (not just saved)
 - Clear browser cache
 
 **Schedule Not Updating**:
+
 - Verify session is published
 - Check times are in correct timezone
 - Wait 1-2 minutes for CDN cache
 - Hard refresh browser (Cmd/Ctrl + Shift + R)
 
 **Slugs Conflicting**:
+
 - Each slug must be unique
 - Sanity will warn about duplicates
 - Use more specific slugs
@@ -346,10 +378,12 @@ Sanity's rich text editor (Portable Text) supports:
 ### Getting Help
 
 **Documentation**:
+
 - [Sanity.io Docs](https://www.sanity.io/docs)
 - [Portable Text Guide](https://www.sanity.io/docs/presenting-block-text)
 
 **Support Channels**:
+
 - GDG Nairobi Slack: #website-help
 - Email: tech@gdgnairobi.com
 
@@ -364,6 +398,7 @@ pnpm run seed:schedule
 ```
 
 **CSV Format**:
+
 ```csv
 title,description,startTime,endTime,type,track,speakers
 "Session Title","Description",2025-10-31T09:00:00+03:00,2025-10-31T09:45:00+03:00,talk,web,"Speaker Name"
@@ -390,6 +425,7 @@ sanity dataset export production backup.tar.gz --types session
 ### Validation Rules
 
 Schemas include custom validation:
+
 - Required fields enforced
 - Email format validation
 - URL format validation
@@ -399,10 +435,12 @@ Schemas include custom validation:
 ### References & Relationships
 
 **One-to-Many**:
+
 - Speaker → Multiple Sessions
 - Track → Multiple Sessions
 
 **Many-to-Many**:
+
 - Session → Multiple Speakers
 - Session → Multiple Tags
 

@@ -9,6 +9,7 @@ The DevFest Nairobi 2025 website is deployed to Cloudflare Pages, leveraging the
 ### Primary: Cloudflare Pages
 
 **Why Cloudflare Pages?**
+
 - Global edge network with 275+ locations
 - Automatic HTTPS and SSL certificates
 - DDoS protection included
@@ -28,9 +29,9 @@ The DevFest Nairobi 2025 website is deployed to Cloudflare Pages, leveraging the
 
 Add these to your GitHub repository secrets (Settings → Secrets and variables → Actions):
 
-| Secret Name | Description | How to Get |
-|------------|-------------|------------|
-| `CLOUDFLARE_API_TOKEN` | API token for Wrangler | Cloudflare Dashboard → Profile → API Tokens → Create Token |
+| Secret Name             | Description                | How to Get                                                    |
+| ----------------------- | -------------------------- | ------------------------------------------------------------- |
+| `CLOUDFLARE_API_TOKEN`  | API token for Wrangler     | Cloudflare Dashboard → Profile → API Tokens → Create Token    |
 | `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Cloudflare Dashboard → Workers & Pages → Account ID (sidebar) |
 
 ## Automated Deployment (Recommended)
@@ -40,10 +41,12 @@ Add these to your GitHub repository secrets (Settings → Secrets and variables 
 The project includes automated deployment via GitHub Actions (`.github/workflows/deploy.yml`).
 
 **Triggers:**
+
 - Push to `main` branch
 - Manual workflow dispatch
 
 **Process:**
+
 1. Checkout code
 2. Install dependencies (pnpm with caching)
 3. Build project (`pnpm run build`)
@@ -52,6 +55,7 @@ The project includes automated deployment via GitHub Actions (`.github/workflows
 ### Setup Steps
 
 1. **Configure Secrets**:
+
    ```bash
    # Go to your GitHub repository
    # Settings → Secrets and variables → Actions
@@ -59,6 +63,7 @@ The project includes automated deployment via GitHub Actions (`.github/workflows
    ```
 
 2. **Push to Main**:
+
    ```bash
    git push origin main
    ```
@@ -82,16 +87,19 @@ You can manually trigger deployment:
 ### Using Wrangler CLI
 
 1. **Install Wrangler**:
+
    ```bash
    pnpm install -g wrangler
    ```
 
 2. **Login to Cloudflare**:
+
    ```bash
    wrangler login
    ```
 
 3. **Build the Project**:
+
    ```bash
    pnpm install
    pnpm run build
@@ -124,11 +132,11 @@ Configure in Cloudflare Pages Dashboard:
 2. Click **Settings** → **Environment variables**
 3. Add the following variables:
 
-| Variable | Value | Description |
-|----------|-------|-------------|
-| `PUBLIC_SANITY_PROJECT_ID` | Your project ID | Found in Sanity project settings |
-| `PUBLIC_SANITY_DATASET` | `production` | Dataset name (usually 'production') |
-| `PUBLIC_SANITY_API_VERSION` | `2024-01-01` | API version date |
+| Variable                    | Value           | Description                         |
+| --------------------------- | --------------- | ----------------------------------- |
+| `PUBLIC_SANITY_PROJECT_ID`  | Your project ID | Found in Sanity project settings    |
+| `PUBLIC_SANITY_DATASET`     | `production`    | Dataset name (usually 'production') |
+| `PUBLIC_SANITY_API_VERSION` | `2024-01-01`    | API version date                    |
 
 ### Local Development Variables
 
@@ -148,12 +156,12 @@ PUBLIC_SANITY_API_VERSION=2024-01-01
 
 If setting up manually in Cloudflare Dashboard:
 
-| Setting | Value |
-|---------|-------|
-| **Build command** | `pnpm run build` |
-| **Build output directory** | `dist` |
-| **Root directory** | `/` |
-| **Node version** | `20.x` |
+| Setting                    | Value            |
+| -------------------------- | ---------------- |
+| **Build command**          | `pnpm run build` |
+| **Build output directory** | `dist`           |
+| **Root directory**         | `/`              |
+| **Node version**           | `20.x`           |
 
 ### Build Optimization
 
@@ -175,6 +183,7 @@ The build process:
    - Enter your domain (e.g., `devfest.gdgnairobi.com`)
 
 2. **DNS Configuration**:
+
    ```
    CNAME devfest pointing to your-project.pages.dev
    ```
@@ -237,11 +246,13 @@ git push --force origin main
 ### Deployment Logs
 
 **GitHub Actions**:
+
 - Go to **Actions** tab
 - Click on workflow run
 - View detailed logs
 
 **Cloudflare Pages**:
+
 - Go to your project → **Deployments**
 - Click on deployment
 - View build logs
@@ -252,6 +263,7 @@ git push --force origin main
 
 **Symptom**: Build fails in CI/CD
 **Solution**:
+
 ```bash
 # Test locally first
 pnpm run build
@@ -267,12 +279,14 @@ pnpm run lint
 
 **Symptom**: App works locally but fails in production
 **Solution**:
+
 - Verify all env vars are set in Cloudflare Pages
 - Check variable names match exactly (including `PUBLIC_` prefix)
 
 #### Slow Build Times
 
 **Solution**:
+
 - Cloudflare Pages caches dependencies automatically
 - GitHub Actions uses pnpm caching
 - Typical build time: 2-4 minutes
@@ -280,11 +294,13 @@ pnpm run lint
 ### Performance Monitoring
 
 **Cloudflare Analytics**:
+
 - Go to your project → **Analytics**
 - Monitor page views, bandwidth, requests
 - Track Core Web Vitals
 
 **External Tools**:
+
 - Google Analytics 4
 - Google Search Console
 - Lighthouse CI
@@ -304,6 +320,7 @@ pnpm run lint
 ### Deployment Schedule
 
 **Recommended**:
+
 - **Major updates**: Outside peak traffic hours
 - **Hotfixes**: As needed (automated rollback available)
 - **Content updates**: Anytime (via Sanity CMS)

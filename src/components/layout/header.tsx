@@ -3,6 +3,51 @@ import { Link } from "@builder.io/qwik-city";
 import { GoogleDevelopersIcon } from "~/components/icons";
 import type { NavItem } from "~/lib/types";
 
+/**
+ * Header provides the main navigation bar for the DevFest Nairobi 2025 website.
+ *
+ * Features:
+ * - Fixed position header with backdrop blur effect
+ * - Google Developers branding with logo and event name
+ * - Responsive navigation with desktop and mobile layouts
+ * - Mobile hamburger menu with slide-in navigation
+ * - Call-to-action buttons (Get Merch, Register Now)
+ * - Keyboard navigation and escape key support
+ * - Focus management and ARIA attributes
+ * - Smooth animations and hover effects
+ *
+ * Navigation Links:
+ * - Home (/)
+ * - Speakers (/speakers)
+ * - Schedule (/schedule)
+ * - Sponsors (/sponsors)
+ *
+ * External Links:
+ * - Merchandise Store (store.devfestnairobi.com)
+ * - Event Registration (gdg.community.dev)
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * <Header />
+ * ```
+ *
+ * @accessibility
+ * - Fixed navigation with aria-label="Main navigation"
+ * - Logo link with descriptive aria-label
+ * - Mobile menu button with aria-expanded and aria-controls
+ * - Keyboard support: Escape key closes mobile menu
+ * - Focus visible states on all interactive elements
+ * - External links with rel="noopener noreferrer" for security
+ * - Descriptive aria-labels on all call-to-action buttons
+ *
+ * @performance
+ * - Signal-based state management for mobile menu
+ * - Optimized with backdrop-blur-sm for performance
+ * - Transform animations use GPU acceleration (transform, scale)
+ * - Conditional rendering for mobile/desktop views
+ */
 export const Header = component$(() => {
   const isMenuOpen = useSignal(false);
 

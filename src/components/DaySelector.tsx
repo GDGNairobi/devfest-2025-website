@@ -1,6 +1,36 @@
 import { component$ } from "@builder.io/qwik";
 import type { DaySelectorProps } from "~/lib/types";
 
+/**
+ * DaySelector provides toggle buttons to switch between event days.
+ *
+ * Features:
+ * - Two-button toggle for Day 1 (Friday) and Day 2 (Saturday)
+ * - Visual feedback with gradient backgrounds for active state
+ * - Keyboard accessible with proper ARIA attributes
+ * - Smooth transitions between states
+ *
+ * @component
+ *
+ * @param props - Component properties
+ * @param props.selectedDay - Signal holding the currently selected day (1 or 2)
+ *
+ * @example
+ * ```tsx
+ * const selectedDay = useSignal(1);
+ * <DaySelector selectedDay={selectedDay} />
+ * ```
+ *
+ * @accessibility
+ * - Uses role="group" with descriptive aria-label
+ * - Each button has aria-pressed state
+ * - Descriptive aria-labels include full date information
+ * - Explicit button type attributes
+ *
+ * @performance
+ * - Lightweight component with minimal re-renders
+ * - Uses Qwik signals for reactive state updates
+ */
 export const DaySelector = component$<DaySelectorProps>(({ selectedDay }) => {
   return (
     <div

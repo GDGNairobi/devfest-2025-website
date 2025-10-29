@@ -17,16 +17,29 @@ import {
 } from "~/components/icons";
 import type { FloatingTechIconProps } from "~/lib/types";
 
+/**
+ * Configuration interface for floating icon positioning and animation.
+ */
 export interface FloatingIconConfig {
+  /** Name of the icon component to render */
   component: string;
+  /** Accessible label for the icon */
   label: string;
+  /** Horizontal position as percentage (0-100) */
   x: number;
+  /** Vertical position as percentage (0-100) */
   y: number;
+  /** Animation start delay in seconds */
   delay: number;
+  /** Animation duration/speed in seconds */
   speed: number;
+  /** Type of floating animation to apply */
   animationType?: "float" | "float-alt" | "float-bounce";
 }
 
+/**
+ * Map of icon names to their respective components.
+ */
 const ICON_COMPONENTS = {
   Firebase: FirebaseIcon,
   GoogleCloud: GoogleCloudIcon,
@@ -45,6 +58,64 @@ const ICON_COMPONENTS = {
   VertexAI: VertexAIIcon,
 } as const;
 
+/**
+ * FloatingTechIcon renders animated technology icons with configurable positioning.
+ *
+ * Features:
+ * - Absolute positioning based on percentage coordinates
+ * - Three animation types: float, float-alt, float-bounce
+ * - Configurable animation speed and delay for staggered effects
+ * - Responsive sizing (smaller on mobile, larger on desktop)
+ * - Special larger sizing for Android icon
+ * - Semi-transparent (40% opacity) for background effect
+ * - Pointer events disabled (doesn't interfere with user interaction)
+ * - Falls back to GoogleIcon if component name not found
+ *
+ * Supported Icons:
+ * - Firebase, Google Cloud, Google Developers
+ * - TensorFlow, Flutter, Angular, Android
+ * - Gemini, Gemma, Chrome
+ * - Code, Terminal, Google, Vertex AI
+ *
+ * Animation Types:
+ * - float: Gentle vertical floating
+ * - float-alt: Alternative floating pattern
+ * - float-bounce: Bouncing float effect
+ *
+ * Sizing:
+ * - Default: h-14 w-14 (mobile), h-20 w-20 (desktop)
+ * - Android: h-20 w-20 (mobile), h-28 w-28 (desktop)
+ *
+ * @component
+ *
+ * @param props - Component properties
+ * @param props.config - Icon configuration object
+ *
+ * @example
+ * ```tsx
+ * const config = {
+ *   component: "Firebase",
+ *   label: "Firebase",
+ *   x: 20,
+ *   y: 30,
+ *   delay: 0,
+ *   speed: 3,
+ *   animationType: "float"
+ * };
+ * <FloatingTechIcon config={config} />
+ * ```
+ *
+ * @accessibility
+ * - Icons are decorative (pointer-events-none, low opacity)
+ * - Label property available for context
+ * - Does not interfere with interactive elements
+ *
+ * @performance
+ * - CSS animations for GPU acceleration
+ * - Absolute positioning avoids layout recalculations
+ * - pointer-events-none prevents unnecessary event handling
+ * - Staggered delays prevent animation clustering
+ */
 export const FloatingTechIcon = component$<FloatingTechIconProps>(
   ({ config }) => {
     const IconComponent =

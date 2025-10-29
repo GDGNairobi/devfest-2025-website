@@ -1,9 +1,11 @@
 # Pull Request
 
 ## Description
+
 <!-- Provide a clear and concise description of your changes -->
 
 ## Type of Change
+
 <!-- Check all that apply -->
 
 - [ ] 🐛 Bug fix (non-breaking change which fixes an issue)
@@ -17,27 +19,33 @@
 - [ ] 🔧 Configuration change
 
 ## Related Issues
+
 <!-- Link related issues using #issue_number -->
 
 Closes #
 
 ## Changes Made
+
 <!-- List the key changes in bullet points -->
 
-- 
-- 
-- 
+-
+-
+-
 
 ## Screenshots/Videos
+
 <!-- If applicable, add screenshots or videos to demonstrate the changes -->
 
 ### Before
+
 <!-- Screenshot or description of the current state -->
 
 ### After
+
 <!-- Screenshot or description after your changes -->
 
 ## Testing
+
 <!-- Describe the tests you ran to verify your changes -->
 
 - [ ] I have tested these changes locally
@@ -47,6 +55,7 @@ Closes #
 - [ ] I have tested on mobile devices (if applicable)
 
 ## Checklist
+
 <!-- Ensure you've completed the following -->
 
 - [ ] My code follows the project's code style (ran linter)
@@ -59,14 +68,17 @@ Closes #
 - [ ] I have rebased my branch on the latest main
 
 ## Additional Notes
+
 <!-- Any additional information or context -->
 
 ## Reviewer Guidelines
+
 <!-- What should reviewers focus on? -->
 
 ---
 
 **By submitting this PR, I confirm that:**
+
 - I have read and followed the [Contributing Guidelines](../CONTRIBUTING.md)
 - I have followed the [Code of Conduct](../CODE_OF_CONDUCT.md)
 - My contribution is original and I have the right to submit it under the project's license

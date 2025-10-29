@@ -8,12 +8,12 @@ This guide will help you set up your development environment and start contribut
 
 ### Required Software
 
-| Tool | Version | Purpose |
-|------|---------|---------|
+| Tool        | Version                         | Purpose            |
+| ----------- | ------------------------------- | ------------------ |
 | **Node.js** | 18.17.0+ or 20.3.0+ or >=21.0.0 | JavaScript runtime |
-| **pnpm** | 9.15.0+ | Package manager |
-| **Git** | Latest | Version control |
-| **VS Code** | Latest (recommended) | Code editor |
+| **pnpm**    | 9.15.0+                         | Package manager    |
+| **Git**     | Latest                          | Version control    |
+| **VS Code** | Latest (recommended)            | Code editor        |
 
 ### Recommended VS Code Extensions
 
@@ -50,6 +50,7 @@ PUBLIC_SANITY_API_VERSION=2024-01-01
 ```
 
 **Getting Sanity Credentials**:
+
 1. Go to [sanity.io/manage](https://sanity.io/manage)
 2. Select your project
 3. Find Project ID in settings
@@ -119,6 +120,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/) format:
 ```
 
 **Types**:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -129,6 +131,7 @@ We use [Conventional Commits](https://www.conventionalcommits.org/) format:
 - `chore`: Maintenance tasks
 
 **Examples**:
+
 ```bash
 feat: add speaker filtering by track
 fix: correct session time display in Safari
@@ -272,12 +275,13 @@ import { MyComponent } from "~/components/MyComponent";
 ### Component Best Practices
 
 **State Management**:
+
 ```typescript
 import { useSignal } from "@builder.io/qwik";
 
 export const Counter = component$(() => {
   const count = useSignal(0);
-  
+
   return (
     <button onClick$={() => count.value++}>
       Count: {count.value}
@@ -287,6 +291,7 @@ export const Counter = component$(() => {
 ```
 
 **Data Fetching**:
+
 ```typescript
 import { routeLoader$ } from "@builder.io/qwik-city";
 
@@ -298,7 +303,7 @@ export const useSpeakers = routeLoader$(async () => {
 
 export default component$(() => {
   const speakers = useSpeakers();
-  
+
   return (
     <div>
       {speakers.value.map(speaker => (
@@ -310,6 +315,7 @@ export default component$(() => {
 ```
 
 **Event Handlers**:
+
 ```typescript
 // Use $ suffix for QRL (lazy-loadable functions)
 <button onClick$={(event) => {
@@ -376,7 +382,7 @@ export const useSessions = routeLoader$(async () => {
       speakers[]->{ name, photo }
     }
   `);
-  
+
   return sessions;
 });
 ```
@@ -387,9 +393,9 @@ export const useSessions = routeLoader$(async () => {
 export const useSessionBySlug = routeLoader$(async ({ params }) => {
   const session = await client.fetch(
     `*[_type == "session" && slug.current == $slug][0]`,
-    { slug: params.slug }
+    { slug: params.slug },
   );
-  
+
   return session;
 });
 ```
@@ -423,16 +429,19 @@ Before submitting a PR:
 ### Browser DevTools
 
 **Network Tab**:
+
 - Throttle to "Slow 3G" to test performance
 - Check resource sizes
 - Verify caching
 
 **Lighthouse**:
+
 - Run Lighthouse audit
 - Aim for 90+ scores in all categories
 - Fix any accessibility issues
 
 **Console**:
+
 - Check for errors and warnings
 - Fix any React/Qwik warnings
 
@@ -441,6 +450,7 @@ Before submitting a PR:
 ### Common Issues
 
 **Build Errors**:
+
 ```bash
 # Clear build cache
 rm -rf dist .qwik
@@ -454,6 +464,7 @@ pnpm run build
 ```
 
 **Type Errors**:
+
 ```bash
 # Run type checking
 pnpm run build.types
@@ -463,6 +474,7 @@ npx tsc --noEmit src/components/MyComponent.tsx
 ```
 
 **Sanity Connection Issues**:
+
 - Verify `.env.local` variables are correct
 - Check Sanity project ID is valid
 - Ensure dataset name is correct
@@ -475,7 +487,7 @@ Add debug logs:
 ```typescript
 export default component$(() => {
   console.log('Component rendered');
-  
+
   return <div>Content</div>;
 });
 ```
@@ -485,9 +497,10 @@ export default component$(() => {
 ### Image Optimization
 
 **Use Lazy Loading**:
+
 ```typescript
-<img 
-  src="/path/to/image.jpg" 
+<img
+  src="/path/to/image.jpg"
   loading="lazy"
   decoding="async"
   alt="Description"
@@ -495,11 +508,12 @@ export default component$(() => {
 ```
 
 **Optimize with Sanity**:
+
 ```typescript
 const imageUrl = urlForImage(image)
   .width(800)
   .height(600)
-  .format('webp')
+  .format("webp")
   .quality(85)
   .url();
 ```
@@ -516,7 +530,7 @@ export const HeavyComponent = component$(() => {
   useVisibleTask$(({ cleanup }) => {
     // Code that runs only when component is visible
   });
-  
+
   return <div>Heavy content</div>;
 });
 ```
@@ -542,7 +556,7 @@ export const HeavyComponent = component$(() => {
 ### ARIA Labels
 
 ```typescript
-<button 
+<button
   onClick$={handleClick}
   aria-label="Close menu"
   aria-expanded={isOpen}
@@ -554,7 +568,7 @@ export const HeavyComponent = component$(() => {
 ### Keyboard Navigation
 
 ```typescript
-<div 
+<div
   tabIndex={0}
   onKeyDown$={(e) => {
     if (e.key === 'Enter' || e.key === ' ') {

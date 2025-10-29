@@ -27,13 +27,13 @@ A high-performance, accessible conference website for DevFest Nairobi 2025 — E
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| [Qwik](https://qwik.builder.io/) | Zero-hydration web framework |
-| [TypeScript](https://www.typescriptlang.org/) | Type-safe JavaScript |
-| [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling |
-| [Sanity.io](https://www.sanity.io/) | Headless CMS |
-| [Cloudflare Pages](https://pages.cloudflare.com/) | Edge deployment |
+| Technology                                        | Purpose                      |
+| ------------------------------------------------- | ---------------------------- |
+| [Qwik](https://qwik.builder.io/)                  | Zero-hydration web framework |
+| [TypeScript](https://www.typescriptlang.org/)     | Type-safe JavaScript         |
+| [Tailwind CSS](https://tailwindcss.com/)          | Utility-first styling        |
+| [Sanity.io](https://www.sanity.io/)               | Headless CMS                 |
+| [Cloudflare Pages](https://pages.cloudflare.com/) | Edge deployment              |
 
 ## 🚀 Quick Start
 
@@ -137,12 +137,12 @@ Do not open public issues for security vulnerabilities.
 
 Our performance targets:
 
-| Metric | Target | Current |
-|--------|--------|---------|
-| First Contentful Paint | < 1.5s | ✅ 1.2s |
+| Metric                   | Target | Current |
+| ------------------------ | ------ | ------- |
+| First Contentful Paint   | < 1.5s | ✅ 1.2s |
 | Largest Contentful Paint | < 2.5s | ✅ 2.1s |
-| Time to Interactive | < 3.5s | ✅ 2.8s |
-| Lighthouse Score | > 95 | ✅ 98 |
+| Time to Interactive      | < 3.5s | ✅ 2.8s |
+| Lighthouse Score         | > 95   | ✅ 98   |
 
 ## 🌍 Community
 
@@ -166,4 +166,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 **Built with ❤️ by GDG Nairobi & the East African tech community**
 
-*Together we grow, together we build!* 🌱
+_Together we grow, together we build!_ 🌱

@@ -1,6 +1,58 @@
 import { component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 
+/**
+ * Footer provides the bottom section of the DevFest Nairobi 2025 website.
+ *
+ * Features:
+ * - Four-column responsive grid layout
+ * - DevFest Nairobi branding with logo and description
+ * - Social media links (Twitter, LinkedIn, GitHub, Email)
+ * - Quick navigation links (Speakers, Schedule, Sponsors)
+ * - External resource links (GDG Nairobi, GDG Program, DevFest Global, Merch Store)
+ * - Copyright and attribution information
+ * - Dynamic current year display
+ * - Dark color scheme (gray-900 background)
+ *
+ * Sections:
+ * 1. Logo and Description (spans 2 columns on medium+ screens)
+ *    - DevFest logo with gradient background
+ *    - Event tagline and description
+ *    - Social media icon links
+ *
+ * 2. Quick Links
+ *    - Internal navigation links
+ *
+ * 3. Resources
+ *    - External links to GDG and DevFest resources
+ *    - Merchandise store link
+ *
+ * 4. Bottom Section (full width)
+ *    - Copyright notice with dynamic year
+ *    - GitHub repository attribution
+ *    - Event tagline
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * <Footer />
+ * ```
+ *
+ * @accessibility
+ * - Semantic footer element with proper landmark role
+ * - Social media links with descriptive aria-labels
+ * - SVG icons with aria-hidden="true" (text labels provide context)
+ * - External links with rel="noopener noreferrer" for security
+ * - Hover states with color transitions for better feedback
+ * - High contrast text (white/gray-300 on gray-900) for readability
+ *
+ * @performance
+ * - SVG icons inlined for reduced HTTP requests
+ * - Minimal JavaScript (only date calculation)
+ * - CSS Grid for efficient layout
+ * - Responsive design with mobile-first approach
+ */
 export const Footer = component$(() => {
   const currentYear = new Date().getFullYear();
 

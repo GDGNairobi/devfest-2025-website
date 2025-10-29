@@ -10,6 +10,7 @@ This directory contains GitHub-specific configuration files including issue temp
 ## Pull Request Template
 
 The PR template ensures all contributors provide consistent information including:
+
 - Description of changes
 - Type of change
 - Related issues
@@ -25,7 +26,6 @@ Runs on every push to `main` and on all pull requests. Includes:
 1. **Lint and Type Check**
    - Runs ESLint to check code quality
    - Runs TypeScript type checking
-   
 2. **Build**
    - Builds the project to ensure no build errors
    - Uploads build artifacts
@@ -41,14 +41,15 @@ To enable Cloudflare Pages deployment, add these secrets to your GitHub reposito
 1. Go to **Settings** → **Secrets and variables** → **Actions**
 2. Add the following repository secrets:
 
-| Secret Name | Description | How to Get |
-|------------|-------------|------------|
-| `CLOUDFLARE_API_TOKEN` | Cloudflare API token with Pages permissions | Go to Cloudflare Dashboard → Profile → API Tokens → Create Token → Select "Edit Cloudflare Workers" template |
-| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare Account ID | Found in Cloudflare Dashboard → Workers & Pages → Overview (right sidebar) |
+| Secret Name             | Description                                 | How to Get                                                                                                   |
+| ----------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `CLOUDFLARE_API_TOKEN`  | Cloudflare API token with Pages permissions | Go to Cloudflare Dashboard → Profile → API Tokens → Create Token → Select "Edit Cloudflare Workers" template |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare Account ID                  | Found in Cloudflare Dashboard → Workers & Pages → Overview (right sidebar)                                   |
 
 #### Manual Deployment
 
 You can also trigger deployment manually:
+
 1. Go to **Actions** → **Deploy to Cloudflare Pages**
 2. Click **Run workflow**
 3. Select branch and click **Run workflow**
@@ -58,6 +59,7 @@ You can also trigger deployment manually:
 ### Creating Issues
 
 When creating a new issue, GitHub will automatically prompt you to choose between:
+
 - 🐛 Bug Report
 - ✨ Feature Request
 
@@ -68,6 +70,7 @@ The PR template will automatically populate when you create a new pull request. 
 ## Workflow Status
 
 You can view the status of workflows:
+
 - In pull requests (checks section)
 - On the Actions tab
 - As badges in the README (optional)

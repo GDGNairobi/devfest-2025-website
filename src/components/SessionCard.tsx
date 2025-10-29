@@ -14,6 +14,45 @@ import {
   isBreakType,
 } from "../lib/schedule.utils";
 
+/**
+ * SessionCard displays comprehensive information about a conference session or break.
+ *
+ * Features:
+ * - Visual distinction for different session types (talks, workshops, breaks)
+ * - Random rotation effect for a playful "sticky note" design
+ * - Speaker information with photos and avatar fallbacks
+ * - Track and difficulty level badges
+ * - Responsive design optimized for mobile and desktop
+ * - Accessible with semantic HTML and ARIA labels
+ *
+ * @component
+ *
+ * @param props - Component properties
+ * @param props.session - Session data from Sanity CMS including title, speakers, timing, and type
+ *
+ * @example
+ * Display a talk session:
+ * ```tsx
+ * <SessionCard session={talkSession} />
+ * ```
+ *
+ * @example
+ * Display a break:
+ * ```tsx
+ * <SessionCard session={lunchBreak} />
+ * ```
+ *
+ * @accessibility
+ * - Uses semantic `<time>` element with dateTime attribute
+ * - Speaker images have descriptive alt text
+ * - Avatar fallbacks have role="img" and aria-label
+ * - All images use lazy loading for performance
+ *
+ * @performance
+ * - Images are lazy-loaded with loading="lazy"
+ * - Async image decoding with decoding="async"
+ * - Minimal re-renders with Qwik's fine-grained reactivity
+ */
 export const SessionCard = component$<SessionCardProps>(({ session }) => {
   return (
     <div
@@ -149,7 +188,24 @@ export const SessionCard = component$<SessionCardProps>(({ session }) => {
   );
 });
 
-// Sub-component for session type badge
+/**
+ * SessionTypeBadge displays a visual badge indicating the session type.
+ *
+ * Displays different styles for:
+ * - Breaks (dashed border, lighter background)
+ * - Regular sessions (solid border)
+ * - Keynotes (includes star emoji)
+ *
+ * @component
+ * @param props - Component properties
+ * @param props.type - Session type (talk, workshop, keynote, break, lunch, etc.)
+ *
+ * @example
+ * ```tsx
+ * <SessionTypeBadge type="keynote" />
+ * <SessionTypeBadge type="lunch-break" />
+ * ```
+ */
 const SessionTypeBadge = component$<SessionTypeBadgeProps>(({ type }) => {
   return (
     <div class="mb-3 flex flex-wrap items-center gap-2">
@@ -169,7 +225,24 @@ const SessionTypeBadge = component$<SessionTypeBadgeProps>(({ type }) => {
   );
 });
 
-// Sub-component for speaker list
+/**
+ * SpeakerList displays a list of speakers for a session.
+ *
+ * Features:
+ * - Speaker photos or avatar fallbacks (first letter of name)
+ * - Speaker name, title, and company
+ * - Optimized images with lazy loading
+ * - Accessible with proper alt text and ARIA labels
+ *
+ * @component
+ * @param props - Component properties
+ * @param props.speakers - Array of speaker objects with name, photo, title, and company
+ *
+ * @example
+ * ```tsx
+ * <SpeakerList speakers={sessionSpeakers} />
+ * ```
+ */
 const SpeakerList = component$<SpeakerListProps>(({ speakers }) => {
   return (
     <div class="mt-4 space-y-2 border-t-2 border-dashed border-gray-400 pt-4">

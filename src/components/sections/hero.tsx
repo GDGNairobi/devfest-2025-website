@@ -8,6 +8,10 @@ import { FloatingTechIcon } from "~/components/floating-tech-icon";
 import { Button } from "~/components/ui/button";
 import { floatingIconsConfig } from "~/config/floating-icons";
 
+/**
+ * Technology category configuration for hero section.
+ * Each category contains tags with gradient color schemes.
+ */
 // Define technology categories with Google-focused technologies
 const techCategories = [
   {
@@ -48,6 +52,51 @@ const techCategories = [
   },
 ];
 
+/**
+ * HeroSection displays the main hero banner on the homepage.
+ *
+ * Features:
+ * - Large event title with gradient text effects
+ * - Event date, time, and venue information
+ * - Animated floating technology icons (Android, Firebase, Flutter, etc.)
+ * - Animated technology tags grouped by category
+ * - Dual call-to-action buttons (Register Now, View Schedule)
+ * - Responsive design with mobile-first approach
+ * - Custom keyframe animations for floating and fade-in effects
+ * - Nairobi skyline illustration
+ *
+ * Technology Categories:
+ * - AI & Machine Learning (Gemini, TensorFlow, Vertex AI)
+ * - Cloud & Infrastructure (Google Cloud, Kubernetes, Cloud Run)
+ * - Mobile & Web (Android, Flutter, Chrome, Angular)
+ * - Developer Tools (Firebase, Cloud Build, DevOps)
+ *
+ * Animation Effects:
+ * - Floating icons with CSS animations
+ * - Staggered fade-in animations for tech tags
+ * - Smooth hover transitions on buttons and tags
+ * - Client-side animation initialization via useVisibleTask$
+ *
+ * @component
+ *
+ * @example
+ * ```tsx
+ * <HeroSection />
+ * ```
+ *
+ * @accessibility
+ * - Semantic HTML structure with proper heading hierarchy
+ * - Time element with machine-readable datetime attribute
+ * - Focus visible states on all interactive elements
+ * - High contrast text and gradients for readability
+ * - Descriptive button labels
+ *
+ * @performance
+ * - useVisibleTask$ for client-side only animations (avoids SSR issues)
+ * - CSS animations for GPU acceleration
+ * - Lazy-loaded floating icons via FloatingTechIcon component
+ * - Optimized gradient rendering with linear-to-* utilities
+ */
 export const HeroSection = component$(() => {
   useStyles$(`
     @keyframes float {
