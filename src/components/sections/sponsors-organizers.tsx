@@ -1,10 +1,5 @@
-import { component$, useSignal, useTask$ } from "@builder.io/qwik";
-import {
-  getSponsors,
-  getVenueLocations,
-  type Sponsor,
-  type VenueLocation,
-} from "~/lib/sanity";
+import { component$, useSignal } from "@builder.io/qwik";
+import type { Sponsor, VenueLocation } from "~/lib/sanity";
 
 // Placeholder data
 const PLACEHOLDER_VENUES: VenueLocation[] = [
@@ -145,53 +140,39 @@ const ORGANIZERS = [
   },
 ];
 
-export const SponsorsOrganizersSection = component$(() => {
-  const selectedDay = useSignal<1 | 2>(1);
-  const sponsors = useSignal<Sponsor[]>([]);
-  const venues = useSignal<VenueLocation[]>([]);
-  const loading = useSignal(true);
+interface SponsorsOrganizersSectionProps {
+  sponsors: Sponsor[];
+  venues: VenueLocation[];
+}
 
-  // Fetch data from Sanity
-  useTask$(async () => {
-    try {
-      const [sponsorsData, venuesData] = await Promise.all([
-        getSponsors(),
-        getVenueLocations(),
-      ]);
+export const SponsorsOrganizersSection = component$<SponsorsOrganizersSectionProps>(
+  ({ sponsors, venues }) => {
+    const selectedDay = useSignal<1 | 2>(1);
 
-      sponsors.value = sponsorsData;
-      venues.value = venuesData;
-    } catch (error) {
-      console.error("Error fetching Sanity data:", error);
-      // Use placeholder data on error for venues only
-      venues.value = PLACEHOLDER_VENUES;
-    } finally {
-      loading.value = false;
-    }
-  });
+    // Use placeholder data for venues if not available
+    const displayVenues =
+      venues.length > 0 ? venues : PLACEHOLDER_VENUES;
 
-  // Use placeholder data for venues if not available
-  const displayVenues =
-    venues.value.length > 0 ? venues.value : PLACEHOLDER_VENUES;
+    const currentVenue = displayVenues.find(
+      (v) => v.day === selectedDay.value,
+    );
 
-  const currentVenue = displayVenues.find((v) => v.day === selectedDay.value);
+    // Group sponsors by tier - only if sponsors exist
+    const sponsorsByTier =
+      sponsors.length > 0
+        ? {
+            platinum: sponsors.filter((s) => s.tier === "platinum"),
+            gold: sponsors.filter((s) => s.tier === "gold"),
+            silver: sponsors.filter((s) => s.tier === "silver"),
+            bronze: sponsors.filter((s) => s.tier === "bronze"),
+            community: sponsors.filter((s) => s.tier === "community"),
+          }
+        : null;
 
-  // Group sponsors by tier - only if sponsors exist
-  const sponsorsByTier =
-    sponsors.value.length > 0
-      ? {
-          platinum: sponsors.value.filter((s) => s.tier === "platinum"),
-          gold: sponsors.value.filter((s) => s.tier === "gold"),
-          silver: sponsors.value.filter((s) => s.tier === "silver"),
-          bronze: sponsors.value.filter((s) => s.tier === "bronze"),
-          community: sponsors.value.filter((s) => s.tier === "community"),
-        }
-      : null;
+    const hasSponsors = sponsors.length > 0;
 
-  const hasSponsors = sponsors.value.length > 0;
-
-  return (
-    <section class="bg-linear-to-b from-gray-50 to-white py-20">
+    return (
+      <section class="bg-linear-to-b from-gray-50 to-white py-20">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Day Switcher */}
         <div class="mb-12 flex justify-center">
@@ -269,7 +250,7 @@ export const SponsorsOrganizersSection = component$(() => {
         )}
 
         {/* Sponsors Section */}
-        {hasSponsors && sponsorsByTier && !loading.value && (
+        {hasSponsors && sponsorsByTier && (
           <div class="mb-20">
             <div class="relative mb-16 text-center">
               {/* Decorative elements */}
@@ -509,15 +490,8 @@ export const SponsorsOrganizersSection = component$(() => {
             ))}
           </div>
         </div>
-
-        {/* Loading State */}
-        {loading.value && (
-          <div class="py-20 text-center">
-            <div class="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-blue-600"></div>
-            <p class="mt-4 text-gray-600">Loading...</p>
-          </div>
-        )}
       </div>
     </section>
-  );
-});
+    );
+  },
+);

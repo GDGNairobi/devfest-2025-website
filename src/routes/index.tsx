@@ -1,11 +1,28 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import { routeLoader$ } from "@builder.io/qwik-city";
 import { Layout } from "~/components/layout/layout";
 import { HeroSection } from "~/components/sections/hero";
 import { SponsorsOrganizersSection } from "~/components/sections/sponsors-organizers";
 import { WhatHappeningSection } from "~/components/sections/what-happening";
+import { getSponsors, getVenueLocations } from "~/lib/sanity";
+
+export const useHomeDataLoader = routeLoader$(async () => {
+  try {
+    const [sponsors, venues] = await Promise.all([
+      getSponsors(),
+      getVenueLocations(),
+    ]);
+    return { sponsors, venues };
+  } catch (error) {
+    console.error("Failed to load home data:", error);
+    return { sponsors: [], venues: [] };
+  }
+});
 
 export default component$(() => {
+  const homeData = useHomeDataLoader();
+
   return (
     <Layout>
       <HeroSection />
@@ -13,7 +30,10 @@ export default component$(() => {
       <WhatHappeningSection />
 
       {/* Sponsors, Organizers & Venue Location */}
-      <SponsorsOrganizersSection />
+      <SponsorsOrganizersSection
+        sponsors={homeData.value.sponsors}
+        venues={homeData.value.venues}
+      />
     </Layout>
   );
 });
