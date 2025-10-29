@@ -145,17 +145,14 @@ interface SponsorsOrganizersSectionProps {
   venues: VenueLocation[];
 }
 
-export const SponsorsOrganizersSection = component$<SponsorsOrganizersSectionProps>(
-  ({ sponsors, venues }) => {
+export const SponsorsOrganizersSection =
+  component$<SponsorsOrganizersSectionProps>(({ sponsors, venues }) => {
     const selectedDay = useSignal<1 | 2>(1);
 
     // Use placeholder data for venues if not available
-    const displayVenues =
-      venues.length > 0 ? venues : PLACEHOLDER_VENUES;
+    const displayVenues = venues.length > 0 ? venues : PLACEHOLDER_VENUES;
 
-    const currentVenue = displayVenues.find(
-      (v) => v.day === selectedDay.value,
-    );
+    const currentVenue = displayVenues.find((v) => v.day === selectedDay.value);
 
     // Group sponsors by tier - only if sponsors exist
     const sponsorsByTier =
@@ -173,223 +170,243 @@ export const SponsorsOrganizersSection = component$<SponsorsOrganizersSectionPro
 
     return (
       <section class="bg-linear-to-b from-gray-50 to-white py-20">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Day Switcher */}
-        <div class="mb-12 flex justify-center">
-          <div class="inline-flex rounded-lg bg-gray-100 p-1 shadow-md">
-            <button
-              onClick$={() => (selectedDay.value = 1)}
-              class={`rounded-md px-8 py-3 text-lg font-semibold transition-all ${
-                selectedDay.value === 1
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-gray-700 hover:text-gray-900"
-              }`}
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Day Switcher */}
+          <div class="mb-12 flex justify-center">
+            <div
+              class="inline-flex rounded-lg bg-gray-100 p-1 shadow-md"
+              role="group"
+              aria-label="Select event day"
             >
-              DAY 1
-            </button>
-            <button
-              onClick$={() => (selectedDay.value = 2)}
-              class={`rounded-md px-8 py-3 text-lg font-semibold transition-all ${
-                selectedDay.value === 2
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-gray-700 hover:text-gray-900"
-              }`}
-            >
-              DAY 2
-            </button>
-          </div>
-        </div>
-
-        {/* Venue & Map Section */}
-        {currentVenue && (
-          <div class="mb-20">
-            <h2 class="mb-8 text-center text-4xl font-bold text-gray-900">
-              Event Location - Day {selectedDay.value}
-            </h2>
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-              {/* Map */}
-              <div class="overflow-hidden rounded-2xl shadow-2xl">
-                <iframe
-                  src={currentVenue.mapEmbedUrl}
-                  width="100%"
-                  height="450"
-                  style="border:0;"
-                  allowFullscreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title={`Map to ${currentVenue.venueName}`}
-                ></iframe>
-              </div>
-
-              {/* Venue Details */}
-              <div class="flex flex-col justify-center rounded-2xl bg-linear-to-br from-blue-50 to-blue-100 p-8 shadow-xl">
-                <h3 class="mb-4 text-3xl font-bold text-gray-900">
-                  {currentVenue.venueName}
-                </h3>
-                <p class="mb-6 flex items-start text-lg text-gray-700">
-                  <span class="mr-2 text-2xl">📍</span>
-                  {currentVenue.address}
-                </p>
-                {currentVenue.directions && (
-                  <div class="mb-6">
-                    <h4 class="mb-2 font-semibold text-gray-900">
-                      🚗 Getting There
-                    </h4>
-                    <p class="text-gray-700">{currentVenue.directions}</p>
-                  </div>
-                )}
-                {currentVenue.parkingInfo && (
-                  <div>
-                    <h4 class="mb-2 font-semibold text-gray-900">🅿️ Parking</h4>
-                    <p class="text-gray-700">{currentVenue.parkingInfo}</p>
-                  </div>
-                )}
-              </div>
+              <button
+                onClick$={() => (selectedDay.value = 1)}
+                type="button"
+                aria-pressed={selectedDay.value === 1}
+                aria-label="View Day 1 sponsors and organizers"
+                class={`rounded-md px-8 py-3 text-lg font-semibold transition-all ${
+                  selectedDay.value === 1
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "text-gray-700 hover:text-gray-900"
+                }`}
+              >
+                DAY 1
+              </button>
+              <button
+                onClick$={() => (selectedDay.value = 2)}
+                type="button"
+                aria-pressed={selectedDay.value === 2}
+                aria-label="View Day 2 sponsors and organizers"
+                class={`rounded-md px-8 py-3 text-lg font-semibold transition-all ${
+                  selectedDay.value === 2
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "text-gray-700 hover:text-gray-900"
+                }`}
+              >
+                DAY 2
+              </button>
             </div>
           </div>
-        )}
 
-        {/* Sponsors Section */}
-        {hasSponsors && sponsorsByTier && (
-          <div class="mb-20">
-            <div class="relative mb-16 text-center">
-              {/* Decorative elements */}
-              <div class="absolute inset-0 -z-10 opacity-10">
-                <div class="absolute top-0 left-1/3 h-32 w-32 rounded-full bg-green-500 blur-3xl"></div>
-                <div class="absolute top-0 right-1/3 h-32 w-32 rounded-full bg-blue-500 blur-3xl"></div>
-              </div>
-
-              <h2 class="headline-large mb-4 bg-linear-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text font-bold text-transparent">
-                Our Sponsors
+          {/* Venue & Map Section */}
+          {currentVenue && (
+            <div class="mb-20">
+              <h2 class="mb-8 text-center text-4xl font-bold text-gray-900">
+                Event Location - Day {selectedDay.value}
               </h2>
-              <p class="mx-auto max-w-2xl text-lg text-gray-600">
-                Thank you to our amazing sponsors who make DevFest Nairobi
-                possible
-              </p>
+              <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                {/* Map */}
+                <div class="overflow-hidden rounded-2xl shadow-2xl">
+                  <iframe
+                    src={currentVenue.mapEmbedUrl}
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowFullscreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Map to ${currentVenue.venueName}`}
+                  ></iframe>
+                </div>
+
+                {/* Venue Details */}
+                <div class="flex flex-col justify-center rounded-2xl bg-linear-to-br from-blue-50 to-blue-100 p-8 shadow-xl">
+                  <h3 class="mb-4 text-3xl font-bold text-gray-900">
+                    {currentVenue.venueName}
+                  </h3>
+                  <p class="mb-6 flex items-start text-lg text-gray-700">
+                    <span class="mr-2 text-2xl">📍</span>
+                    {currentVenue.address}
+                  </p>
+                  {currentVenue.directions && (
+                    <div class="mb-6">
+                      <h4 class="mb-2 font-semibold text-gray-900">
+                        🚗 Getting There
+                      </h4>
+                      <p class="text-gray-700">{currentVenue.directions}</p>
+                    </div>
+                  )}
+                  {currentVenue.parkingInfo && (
+                    <div>
+                      <h4 class="mb-2 font-semibold text-gray-900">
+                        🅿️ Parking
+                      </h4>
+                      <p class="text-gray-700">{currentVenue.parkingInfo}</p>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
+          )}
 
-            {/* Platinum Sponsors */}
-            {sponsorsByTier.platinum.length > 0 && (
-              <div class="mb-16">
-                <div class="mb-8 text-center">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
-                    <span>💎</span>
-                    <span>Platinum Sponsors</span>
-                  </div>
+          {/* Sponsors Section */}
+          {hasSponsors && sponsorsByTier && (
+            <div class="mb-20">
+              <div class="relative mb-16 text-center">
+                {/* Decorative elements */}
+                <div class="absolute inset-0 -z-10 opacity-10">
+                  <div class="absolute top-0 left-1/3 h-32 w-32 rounded-full bg-green-500 blur-3xl"></div>
+                  <div class="absolute top-0 right-1/3 h-32 w-32 rounded-full bg-blue-500 blur-3xl"></div>
                 </div>
-                <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-                  {sponsorsByTier.platinum.map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group relative overflow-hidden rounded-3xl bg-white p-12 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl"
-                    >
-                      {/* Animated gradient border */}
-                      <div class="absolute inset-0 rounded-3xl bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
-                      <div class="absolute inset-0.5 rounded-3xl bg-white"></div>
 
-                      <div class="relative flex items-center justify-center">
-                        <img
-                          src={sponsor.logo.asset.url}
-                          alt={sponsor.name}
-                          class="max-h-24 w-auto object-contain transition-transform group-hover:scale-105"
-                          width="200"
-                          height="96"
-                        />
-                      </div>
-                    </a>
-                  ))}
-                </div>
+                <h2 class="headline-large mb-4 bg-linear-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text font-bold text-transparent">
+                  Our Sponsors
+                </h2>
+                <p class="mx-auto max-w-2xl text-lg text-gray-600">
+                  Thank you to our amazing sponsors who make DevFest Nairobi
+                  possible
+                </p>
               </div>
-            )}
 
-            {/* Gold Sponsors */}
-            {sponsorsByTier.gold.length > 0 && (
-              <div class="mb-16">
-                <div class="mb-8 text-center">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-500 to-orange-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
-                    <span>🥇</span>
-                    <span>Gold Sponsors</span>
+              {/* Platinum Sponsors */}
+              {sponsorsByTier.platinum.length > 0 && (
+                <div class="mb-16">
+                  <div class="mb-8 text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-purple-500 to-pink-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
+                      <span>💎</span>
+                      <span>Platinum Sponsors</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                    {sponsorsByTier.platinum.map((sponsor) => (
+                      <a
+                        key={sponsor._id}
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative overflow-hidden rounded-3xl bg-white p-12 shadow-xl transition-all hover:-translate-y-2 hover:shadow-2xl"
+                      >
+                        {/* Animated gradient border */}
+                        <div class="absolute inset-0 rounded-3xl bg-linear-to-r from-purple-500 via-pink-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
+                        <div class="absolute inset-0.5 rounded-3xl bg-white"></div>
+
+                        <div class="relative flex items-center justify-center">
+                          <img
+                            src={sponsor.logo.asset.url}
+                            alt={`${sponsor.name} logo`}
+                            class="max-h-24 w-auto object-contain transition-transform group-hover:scale-105"
+                            width="200"
+                            height="96"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
-                <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
-                  {sponsorsByTier.gold.map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
-                    >
-                      <div class="absolute inset-0 rounded-2xl bg-linear-to-br from-yellow-500 to-orange-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
-                      <div class="absolute inset-0.5 rounded-2xl bg-white"></div>
+              )}
 
-                      <div class="relative flex items-center justify-center">
-                        <img
-                          src={sponsor.logo.asset.url}
-                          alt={sponsor.name}
-                          class="max-h-16 w-auto object-contain transition-transform group-hover:scale-105"
-                          width="150"
-                          height="64"
-                        />
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
+              {/* Gold Sponsors */}
+              {sponsorsByTier.gold.length > 0 && (
+                <div class="mb-16">
+                  <div class="mb-8 text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-500 to-orange-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
+                      <span>🥇</span>
+                      <span>Gold Sponsors</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+                    {sponsorsByTier.gold.map((sponsor) => (
+                      <a
+                        key={sponsor._id}
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl"
+                      >
+                        <div class="absolute inset-0 rounded-2xl bg-linear-to-br from-yellow-500 to-orange-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
+                        <div class="absolute inset-0.5 rounded-2xl bg-white"></div>
 
-            {/* Silver Sponsors */}
-            {sponsorsByTier.silver.length > 0 && (
-              <div class="mb-16">
-                <div class="mb-8 text-center">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-gray-400 to-gray-600 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
-                    <span>🥈</span>
-                    <span>Silver Sponsors</span>
+                        <div class="relative flex items-center justify-center">
+                          <img
+                            src={sponsor.logo.asset.url}
+                            alt={`${sponsor.name} logo`}
+                            class="max-h-16 w-auto object-contain transition-transform group-hover:scale-105"
+                            width="150"
+                            height="64"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
-                <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-6">
-                  {sponsorsByTier.silver.map((sponsor) => (
-                    <a
-                      key={sponsor._id}
-                      href={sponsor.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="group relative overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
-                    >
-                      <div class="absolute inset-0 rounded-xl bg-linear-to-br from-gray-300 to-gray-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
-                      <div class="absolute inset-0.5 rounded-xl bg-white"></div>
+              )}
 
-                      <div class="relative flex items-center justify-center">
-                        <img
-                          src={sponsor.logo.asset.url}
-                          alt={sponsor.name}
-                          class="max-h-12 w-auto object-contain transition-transform group-hover:scale-105"
-                          width="100"
-                          height="48"
-                        />
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
+              {/* Silver Sponsors */}
+              {sponsorsByTier.silver.length > 0 && (
+                <div class="mb-16">
+                  <div class="mb-8 text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-gray-400 to-gray-600 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
+                      <span>🥈</span>
+                      <span>Silver Sponsors</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-6">
+                    {sponsorsByTier.silver.map((sponsor) => (
+                      <a
+                        key={sponsor._id}
+                        href={sponsor.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group relative overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:shadow-lg"
+                      >
+                        <div class="absolute inset-0 rounded-xl bg-linear-to-br from-gray-300 to-gray-500 opacity-0 transition-opacity group-hover:opacity-100"></div>
+                        <div class="absolute inset-0.5 rounded-xl bg-white"></div>
 
-            {/* Bronze & Community Sponsors */}
-            {(sponsorsByTier.bronze.length > 0 ||
-              sponsorsByTier.community.length > 0) && (
-              <div>
-                <div class="mb-8 text-center">
-                  <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
-                    <span>🤝</span>
-                    <span>Community Partners</span>
+                        <div class="relative flex items-center justify-center">
+                          <img
+                            src={sponsor.logo.asset.url}
+                            alt={`${sponsor.name} logo`}
+                            class="max-h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                            width="100"
+                            height="48"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
-                <div class="grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8">
-                  {[...sponsorsByTier.bronze, ...sponsorsByTier.community].map(
-                    (sponsor) => (
+              )}
+
+              {/* Bronze & Community Sponsors */}
+              {(sponsorsByTier.bronze.length > 0 ||
+                sponsorsByTier.community.length > 0) && (
+                <div>
+                  <div class="mb-8 text-center">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-red-500 px-6 py-2 text-sm font-bold tracking-wide text-white uppercase shadow-lg">
+                      <span>🤝</span>
+                      <span>Community Partners</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-4 gap-4 md:grid-cols-6 lg:grid-cols-8">
+                    {[
+                      ...sponsorsByTier.bronze,
+                      ...sponsorsByTier.community,
+                    ].map((sponsor) => (
                       <a
                         key={sponsor._id}
                         href={sponsor.website}
@@ -403,95 +420,95 @@ export const SponsorsOrganizersSection = component$<SponsorsOrganizersSectionPro
                         <div class="relative flex items-center justify-center">
                           <img
                             src={sponsor.logo.asset.url}
-                            alt={sponsor.name}
+                            alt={`${sponsor.name} logo`}
                             class="max-h-8 w-auto object-contain transition-transform group-hover:scale-105"
                             width="80"
                             height="32"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </div>
                       </a>
-                    ),
-                  )}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        )}
+              )}
+            </div>
+          )}
 
-        {/* Organizers Section */}
-        <div class="mt-20">
-          <div class="relative mb-16 text-center">
-            {/* Decorative elements */}
-            <div class="absolute inset-0 -z-10 opacity-10">
-              <div class="absolute top-0 left-1/4 h-32 w-32 rounded-full bg-blue-500 blur-3xl"></div>
-              <div class="absolute top-0 right-1/4 h-32 w-32 rounded-full bg-purple-500 blur-3xl"></div>
+          {/* Organizers Section */}
+          <div class="mt-20">
+            <div class="relative mb-16 text-center">
+              {/* Decorative elements */}
+              <div class="absolute inset-0 -z-10 opacity-10">
+                <div class="absolute top-0 left-1/4 h-32 w-32 rounded-full bg-blue-500 blur-3xl"></div>
+                <div class="absolute top-0 right-1/4 h-32 w-32 rounded-full bg-purple-500 blur-3xl"></div>
+              </div>
+
+              <h2 class="headline-large mb-4 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text font-bold text-transparent">
+                Meet the Team
+              </h2>
+              <p class="mx-auto max-w-2xl text-lg text-gray-600">
+                The amazing people making DevFest Nairobi 2025 possible
+              </p>
             </div>
 
-            <h2 class="headline-large mb-4 bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text font-bold text-transparent">
-              Meet the Team
-            </h2>
-            <p class="mx-auto max-w-2xl text-lg text-gray-600">
-              The amazing people making DevFest Nairobi 2025 possible
-            </p>
-          </div>
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {ORGANIZERS.map((organizer, index) => (
+                <div
+                  key={organizer._id}
+                  class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl"
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                  }}
+                >
+                  {/* Gradient accent */}
+                  <div class="absolute top-0 right-0 h-1 w-full bg-linear-to-r from-blue-500 via-purple-500 to-pink-500"></div>
 
-          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {ORGANIZERS.map((organizer, index) => (
-              <div
-                key={organizer._id}
-                class="group relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl"
-                style={{
-                  animationDelay: `${index * 50}ms`,
-                }}
-              >
-                {/* Gradient accent */}
-                <div class="absolute top-0 right-0 h-1 w-full bg-linear-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                  <div class="text-center">
+                    {/* Floating badge for company */}
+                    {organizer.company && (
+                      <div class="mb-4 inline-block rounded-full bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 px-4 py-1 text-xs font-semibold text-white shadow-md">
+                        {organizer.company}
+                      </div>
+                    )}
 
-                <div class="text-center">
-                  {/* Floating badge for company */}
-                  {organizer.company && (
-                    <div class="mb-4 inline-block rounded-full bg-linear-to-r from-blue-500 via-purple-500 to-pink-500 px-4 py-1 text-xs font-semibold text-white shadow-md">
-                      {organizer.company}
-                    </div>
-                  )}
+                    <h3 class="mb-1 text-lg font-bold text-gray-900">
+                      {organizer.name}
+                    </h3>
+                    <p class="mb-3 text-sm font-medium text-purple-600">
+                      {organizer.role}
+                    </p>
 
-                  <h3 class="mb-1 text-lg font-bold text-gray-900">
-                    {organizer.name}
-                  </h3>
-                  <p class="mb-3 text-sm font-medium text-purple-600">
-                    {organizer.role}
-                  </p>
+                    {organizer.bio && organizer.bio !== organizer.role && (
+                      <p class="mb-4 text-xs text-gray-500">{organizer.bio}</p>
+                    )}
 
-                  {organizer.bio && organizer.bio !== organizer.role && (
-                    <p class="mb-4 text-xs text-gray-500">{organizer.bio}</p>
-                  )}
-
-                  {/* Social links */}
-                  {organizer.twitter && (
-                    <a
-                      href={`https://twitter.com/${organizer.twitter}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 transition-all hover:bg-blue-100"
-                      aria-label={`${organizer.name} on Twitter`}
-                    >
-                      <svg
-                        class="h-3 w-3"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+                    {/* Social links */}
+                    {organizer.twitter && (
+                      <a
+                        href={`https://twitter.com/${organizer.twitter}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1 rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 transition-all hover:bg-blue-100"
+                        aria-label={`${organizer.name} on Twitter`}
                       >
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                      @{organizer.twitter}
-                    </a>
-                  )}
+                        <svg
+                          class="h-3 w-3"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        @{organizer.twitter}
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     );
-  },
-);
+  });

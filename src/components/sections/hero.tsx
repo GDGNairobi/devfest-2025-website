@@ -217,9 +217,16 @@ export const HeroSection = component$(() => {
 
           {/* Day Switcher */}
           <div class="mb-6 flex justify-center">
-            <div class="inline-flex rounded-xl bg-gray-200 p-1.5 shadow-sm">
+            <div
+              class="inline-flex rounded-xl bg-gray-200 p-1.5 shadow-sm"
+              role="group"
+              aria-label="Select event day"
+            >
               <button
                 onClick$={() => (selectedDay.value = 1)}
+                type="button"
+                aria-pressed={selectedDay.value === 1}
+                aria-label="View Day 1 - October 31, 2025"
                 class={`rounded-lg px-6 py-2 text-sm font-semibold transition-all ${
                   selectedDay.value === 1
                     ? "bg-blue-600 text-white shadow-md"
@@ -230,6 +237,9 @@ export const HeroSection = component$(() => {
               </button>
               <button
                 onClick$={() => (selectedDay.value = 2)}
+                type="button"
+                aria-pressed={selectedDay.value === 2}
+                aria-label="View Day 2 - November 1, 2025"
                 class={`rounded-lg px-6 py-2 text-sm font-semibold transition-all ${
                   selectedDay.value === 2
                     ? "bg-blue-600 text-white shadow-md"

@@ -26,9 +26,9 @@ export const SessionCard = component$<SessionCardProps>(({ session }) => {
       <div class="relative p-6 pt-8">
         {/* Mobile time with sticky note style */}
         <div class="mb-3 flex items-center gap-1 text-xs font-bold tracking-wide text-gray-700 uppercase md:hidden">
-          <span>
+          <time dateTime={session.startTime}>
             {formatTime(session.startTime)} - {formatTime(session.endTime)}
-          </span>
+          </time>
         </div>
 
         {/* Handwritten-style title */}
@@ -69,14 +69,20 @@ export const SessionCard = component$<SessionCardProps>(({ session }) => {
                             <div class="shrink-0 rounded border-2 border-white bg-white p-0.5 shadow-sm">
                               <img
                                 src={speaker.photo.asset.url}
-                                alt={speaker.name}
+                                alt={`${speaker.name} profile photo`}
                                 class="h-8 w-8 object-cover"
                                 width={32}
                                 height={32}
+                                loading="lazy"
+                                decoding="async"
                               />
                             </div>
                           ) : (
-                            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded border-2 border-white bg-gray-700 font-mono text-xs font-bold text-white shadow-sm">
+                            <div
+                              class="flex h-10 w-10 shrink-0 items-center justify-center rounded border-2 border-white bg-gray-700 font-mono text-xs font-bold text-white shadow-sm"
+                              role="img"
+                              aria-label={`${speaker.name} avatar`}
+                            >
                               {speaker.name.charAt(0)}
                             </div>
                           )}

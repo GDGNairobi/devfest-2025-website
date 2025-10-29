@@ -23,7 +23,11 @@ const STAGES: Stage[] = [
 
 export const TrackFilter = component$<TrackFilterProps>(({ selectedStage }) => {
   return (
-    <div class="mx-auto flex max-w-4xl flex-wrap justify-center gap-3">
+    <div
+      class="mx-auto flex max-w-4xl flex-wrap justify-center gap-3"
+      role="group"
+      aria-label="Filter sessions by track"
+    >
       <button
         class={`rounded-full px-6 py-2 text-sm font-semibold transition-all ${
           selectedStage.value === "all"
@@ -31,6 +35,9 @@ export const TrackFilter = component$<TrackFilterProps>(({ selectedStage }) => {
             : "bg-white text-gray-700 shadow-sm hover:shadow-md"
         }`}
         onClick$={() => (selectedStage.value = "all")}
+        type="button"
+        aria-pressed={selectedStage.value === "all"}
+        aria-label="Show all sessions"
       >
         All Sessions
       </button>
@@ -43,8 +50,11 @@ export const TrackFilter = component$<TrackFilterProps>(({ selectedStage }) => {
               : "bg-white text-gray-700 shadow-sm hover:shadow-md"
           }`}
           onClick$={() => (selectedStage.value = stage.id)}
+          type="button"
+          aria-pressed={selectedStage.value === stage.id}
+          aria-label={`Filter by ${stage.name}`}
         >
-          {stage.icon} {stage.name}
+          <span aria-hidden="true">{stage.icon}</span> {stage.name}
         </button>
       ))}
     </div>
