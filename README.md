@@ -126,9 +126,8 @@ devfest-nairobi-2025/
 
 ## 🔒 Security
 
-Found a security issue? Please report it responsibly:
+Found a security issue? Please report it responsibly via GitHub Security Advisories.
 
-- **Email**: security@gdgnairobi.com
 - **Policy**: See [SECURITY.md](./SECURITY.md)
 
 Do not open public issues for security vulnerabilities.

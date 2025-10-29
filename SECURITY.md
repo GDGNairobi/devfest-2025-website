@@ -16,9 +16,7 @@ The GDG Nairobi team takes security bugs seriously. We appreciate your efforts t
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to:
-
-📧 **security@gdgnairobi.com**
+Instead, please report them via GitHub Security Advisories or create a private security report.
 
 Include the following information in your report:
 
@@ -106,7 +104,7 @@ When we receive a security bug report, we will:
 
 ## Comments on this Policy
 
-If you have suggestions on how this process could be improved, please submit a pull request or email us at [security@gdgnairobi.com](mailto:security@gdgnairobi.com).
+If you have suggestions on how this process could be improved, please submit a pull request.
 
 ---
 

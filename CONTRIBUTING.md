@@ -15,7 +15,7 @@ First off, thank you for considering contributing to DevFest Nairobi 2025! 🎉 
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [conduct@gdgnairobi.com](mailto:conduct@gdgnairobi.com).
+This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior via GitHub Issues.
 
 ## How Can I Contribute?
 
@@ -359,13 +359,11 @@ Before submitting your PR, ensure:
 - **GitHub Issues**: Bug reports and feature requests
 - **GitHub Discussions**: Questions and community discussions
 - **Discord**: Real-time community chat (link in README)
-- **Email**: [tech@gdgnairobi.com](mailto:tech@gdgnairobi.com)
 
 ### Maintainers
 
-For urgent matters or security concerns, contact the maintainers:
+For urgent matters or security concerns, use GitHub Issues or Discussions.
 
-- **Technical Lead**: [tech@gdgnairobi.com](mailto:tech@gdgnairobi.com)
 - **GDG Nairobi**: [@gdgnairobi](https://twitter.com/gdgnairobi)
 
 ## Recognition
