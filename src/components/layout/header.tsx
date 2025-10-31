@@ -67,9 +67,12 @@ export const Header = component$(() => {
 
   const navItems: NavItem[] = [
     { label: "Home", href: "/" },
-    { label: "Speakers", href: "/speakers" },
-    { label: "Schedule", href: "/schedule" },
-    { label: "Sponsors", href: "/sponsors" },
+    // { label: "Speakers", href: "/speakers" },
+    {
+      label: "Schedule",
+      href: "https://gdg.community.dev/events/details/google-gdg-nairobi-presents-devfest-nairobi-day-two/",
+    },
+    // { label: "Sponsors", href: "/sponsors" },
   ];
 
   return (
@@ -193,7 +196,7 @@ export const Header = component$(() => {
               </Link>
             ))}
             <div class="space-y-2 border-t border-gray-200 pt-4">
-              <Link
+              {/*  <Link
                 href="https://store.devfestnairobi.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -201,7 +204,7 @@ export const Header = component$(() => {
                 aria-label="Get DevFest Nairobi merchandise"
               >
                 🛍️ Get Merch
-              </Link>
+              </Link> */}
               <Link
                 href="https://gdg.community.dev/events/details/google-gdg-nairobi-presents-devfest-nairobi-day-two/"
                 target="_blank"
